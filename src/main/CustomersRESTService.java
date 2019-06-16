@@ -35,7 +35,7 @@ public class CustomersRESTService {
 		//Query query = em.createQuery("select a from Agent a where a.agentId=" + agentId);
 		//Agent agent = (Agent) query.getSingleResult();
 		
-		Query query = em.createQuery("SELECT c FROM customers c where c.CustomerId = " + customerId);
+		Query query = em.createQuery("SELECT c FROM Customer c where c.customerId = " + customerId);
 		Customer customer = (Customer) query.getSingleResult();
 		
 		Gson gson = new Gson();
@@ -43,7 +43,5 @@ public class CustomersRESTService {
 		String jsonString = gson.toJson(customer, type);
 		em.close();
 		return jsonString;
-
 	}
-
 }

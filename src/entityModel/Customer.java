@@ -139,9 +139,5 @@ public class Customer implements Serializable {
 		this.custProv = custProv;
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Linda
 
 }

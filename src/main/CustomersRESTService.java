@@ -28,6 +28,7 @@ public class CustomersRESTService {
 	{
 		//	http://localhost:8080/Team3-JSPWebService/rest/customers/getcustomer/104
 		EntityManager em =
+<<<<<<< HEAD
 				Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
 		
 		//Agent agent = em.find(Agent.class, agentId);
@@ -35,6 +36,9 @@ public class CustomersRESTService {
 		//Query query = em.createQuery("select a from Agent a where a.agentId=" + agentId);
 		//Agent agent = (Agent) query.getSingleResult();
 		
+=======
+				Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();		
+>>>>>>> Linda
 		Query query = em.createQuery("SELECT c FROM Customer c where c.customerId = " + customerId);
 		Customer customer = (Customer) query.getSingleResult();
 		

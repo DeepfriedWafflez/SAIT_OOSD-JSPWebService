@@ -40,9 +40,6 @@ public class Customer implements Serializable {
 
 	private String custProv;
 
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="customer")
-	private List<Booking> bookings;
 
 	public Customer() {
 	}
@@ -143,26 +140,6 @@ public class Customer implements Serializable {
 		this.custProv = custProv;
 	}
 
-	public List<Booking> getBookings() {
-		return this.bookings;
-	}
 
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
-	}
-
-	public Booking addBooking(Booking booking) {
-		getBookings().add(booking);
-		booking.setCustomer(this);
-
-		return booking;
-	}
-
-	public Booking removeBooking(Booking booking) {
-		getBookings().remove(booking);
-		booking.setCustomer(null);
-
-		return booking;
-	}
 
 }

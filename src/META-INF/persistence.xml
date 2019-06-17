@@ -5,8 +5,8 @@
 		<class>entityModel.Customer</class>	
 			<properties>
 				<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/travelexperts"/>
-				<property name="javax.persistence.jdbc.user" value="adman"/>
-				<property name="javax.persistence.jdbc.password" value="password"/>
+				<property name="javax.persistence.jdbc.user" value="admin"/>
+				<property name="javax.persistence.jdbc.password" value="P@ssw0rd"/>
 				<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
 			</properties>	
 

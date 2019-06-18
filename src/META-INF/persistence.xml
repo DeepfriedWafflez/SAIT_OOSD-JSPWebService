@@ -4,10 +4,10 @@
 		<class>entity.Customer</class>
 		<class>entity.Bookings</class>	
 			<properties>
-				<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/travelexperts"/>
+				<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/travelexperts?serverTimezone=UTC"/>
 				<property name="javax.persistence.jdbc.user" value="admin"/>
 				<property name="javax.persistence.jdbc.password" value="P@ssw0rd"/>
-				<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+				<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			</properties>	
 
 	</persistence-unit>

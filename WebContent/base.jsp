@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="icon" href="images/logo3.png">
 
 </head>
 

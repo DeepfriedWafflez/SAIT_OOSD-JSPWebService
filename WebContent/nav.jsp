@@ -4,7 +4,8 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
       <div class="container">
-        <a class="navbar-brand" href="home.jsp">Travel Experts</a>
+      	<!-- Travel Experts -->
+        <a class="navbar-brand" href="home.jsp"><img src="images/logo3.png" alt="logo" width="50" height="50"> Travel Experts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
         </button>

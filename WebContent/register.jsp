@@ -52,6 +52,13 @@
 	                  </div>
 	              </div>
 	              <br>
+	              <div class="mb-3">
+	                  <div class="form-group">
+	                    <label for="lname" class="sr-only sr-only-focusable">Confirm Password</label>
+	                    <input type="password" class="form-control" id="lname" name="lname" placeholder="Confirm Password">
+	                  </div>
+	              </div>
+	              <br>
 	              <p>Already have an account, please <a href='login.jsp'>login</a>  </p>
 	              <div class="form-group">
 	                <input type="submit" class="btn btn-outline-primary btn-sm" id="submit" name="submit" value="Signup">

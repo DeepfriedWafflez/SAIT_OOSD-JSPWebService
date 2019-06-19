@@ -18,7 +18,7 @@
           <div class="col-md-4">
             <h3 class="probootstrap_font-18 mb-3">Site Map</h3>
             <ul class="list-unstyled">
-              <li><a href="home.jsp" >Home</a></li>
+              <li><a href="index.jsp" >Home</a></li>
               <li><a href="packages.jsp">Packages</a></li>
               <li><a href="login.jsp">Login</a></li>
               <li><a href="register.jsp">Register</a></li>

@@ -46,33 +46,41 @@
             <a href="#" class="probootstrap-thumbnail">
               <img src="images/deal5.jpg" alt="Free Template by uicookies.com" class="img-fluid">
               <div class="probootstrap-text">
-                <h3>Buena</h3>
+                <h3>European Vacation <br>
+                	$3,280
+                </h3>
               </div>
             </a>
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
               <img src="images/deal6.jpg" alt="Free Template by uicookies.com" class="img-fluid">
-              <h3>Road</h3>
+              <h3>Asian Expedition <br>
+              	$3,100
+              </h3>
             </a>
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
               <img src="images/deal7.jpg" alt="Free Template by uicookies.com" class="img-fluid">
-              <h3>Australia</h3>
+              <h3>Caribbean New Year <br>
+              	$5,200
+              </h3>
             </a>
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
               <img src="images/deal8.jpg" alt="Free Template by uicookies.com" class="img-fluid">
-              <h3>Japan</h3>
+              <h3>Polynesian Paradise <br>
+              	$3,310
+              </h3>
             </a>
           </div>
         </div>
+        <a href="packages.jsp"> <button class="btn btn-outline-primary btn-block text-uppercase"> More </button></a>
       </div>
     </section>
     
-
 
 <jsp:include page="footer.jsp" />
 

@@ -18,8 +18,8 @@
    	 </div>
     
 </section>
-
-<section class="probootstrap_section" id="section-city-guides">
+<!-- id="section-city-guides" -->
+<section class="probootstrap_section bg-light" id="section-contact">
       <div class="container">
         <div class="row mb-3">
           <div class="col-md-6">

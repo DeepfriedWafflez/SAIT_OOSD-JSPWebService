@@ -19,17 +19,32 @@
       </div>
     </section>
     
+    <section class="probootstrap_section" id="section-feature-testimonial">
+      <div class="container">
+        <div class="row justify-content-center mb-2">
+          <div class="col-md-12 text-center mb-5 probootstrap-animate">
+            <h2 class="display-4 border-bottom probootstrap-section-heading">Welcome to Travel Experts</h2>
+            <blockquote class="">
+              <p class="lead mb-2"><em>At Travel Experts, client satisfaction is our number one priority. Please browse through our available 
+              package deals and get in touch with us with your queries.</em></p>
+            </blockquote>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
     <section class="probootstrap_section" id="section-city-guides">
       <div class="container">
         <div class="row text-center mb-5 probootstrap-animate">
           <div class="col-md-12">
-            <h2 class="display-4 border-bottom probootstrap-section-heading">Our Packages</h2>
+            <h2 class="display-4 border-bottom probootstrap-section-heading">Our Package Deals</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
-              <img src="images/img_1.jpg" alt="Free Template by uicookies.com" class="img-fluid">
+              <img src="images/deal5.jpg" alt="Free Template by uicookies.com" class="img-fluid">
               <div class="probootstrap-text">
                 <h3>Buena</h3>
               </div>
@@ -37,19 +52,19 @@
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
-              <img src="images/img_2.jpg" alt="Free Template by uicookies.com" class="img-fluid">
+              <img src="images/deal6.jpg" alt="Free Template by uicookies.com" class="img-fluid">
               <h3>Road</h3>
             </a>
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
-              <img src="images/img_3.jpg" alt="Free Template by uicookies.com" class="img-fluid">
+              <img src="images/deal7.jpg" alt="Free Template by uicookies.com" class="img-fluid">
               <h3>Australia</h3>
             </a>
           </div>
           <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
             <a href="#" class="probootstrap-thumbnail">
-              <img src="images/img_4.jpg" alt="Free Template by uicookies.com" class="img-fluid">
+              <img src="images/deal8.jpg" alt="Free Template by uicookies.com" class="img-fluid">
               <h3>Japan</h3>
             </a>
           </div>
@@ -57,84 +72,7 @@
       </div>
     </section>
     
-    <section class="probootstrap_section">
-      <div class="container">
-        <div class="row text-center mb-5 probootstrap-animate">
-          <div class="col-md-12">
-            <h2 class="display-4 border-bottom probootstrap-section-heading">Travel With Us</h2>
-          </div>
-        </div>
-        
-        <div class="row probootstrap-animate">
-          <div class="col-md-12">
-            <div class="owl-carousel js-owl-carousel">
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-teatro-de-la-caridad"></span>
-                <em>Teatro de la Caridad</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-royal-museum-of-the-armed-forces"></span>
-                <em>Royal Museum of the Armed Forces</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-parthenon"></span>
-                <em>Parthenon</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-marina-bay-sands"></span>
-                <em>Marina Bay Sands</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-samarra-minaret"></span>
-                <em>Samarra Minaret</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-chiang-kai-shek-memorial"></span>
-                <em>Chiang Kai Shek Memorial</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-heuvelse-kerk-tilburg"></span>
-                <em>Heuvelse Kerk Tilburg</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-cathedral-of-cordoba"></span>
-                <em>Cathedral of Cordoba</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-london-bridge"></span>
-                <em>London Bridge</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-taj-mahal"></span>
-                <em>Taj Mahal</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-leaning-tower-of-pisa"></span>
-                <em>Leaning Tower of Pisa</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-burj-al-arab"></span>
-                <em>Burj al Arab</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-gate-of-india"></span>
-                <em>Gate of India</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-osaka-castle"></span>
-                <em>Osaka Castle</em>
-              </a>
-              <a class="probootstrap-slide" href="#">
-                <span class="flaticon-statue-of-liberty"></span>
-                <em>Statue of Liberty</em>
-              </a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
+
 
 <jsp:include page="footer.jsp" />
 

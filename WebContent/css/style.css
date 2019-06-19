@@ -550,3 +550,11 @@ a {
 .probootstrap-animate {
   opacity: 0;
   visibility: hidden; }
+  
+.profile-bookings {
+  font-family: 'Aclonica', sans-serif;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 20px;
+} 
+

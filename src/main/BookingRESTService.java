@@ -15,26 +15,46 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import entity.BookingOld;
+import entity.Booking;
+import entity.Bookingdetail;
 
 @SuppressWarnings("unchecked")
 @Path("/bookings")
 public class BookingRESTService {
 	
+	
+	//gets the base booking information
 	@GET
-	@Path("/history/id={ Customer }")
+	@Path("/getbookings/{ CustomerId }")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getCountryProvinces(@PathParam("Customer") String cust) {
-		int CustomerId = Integer.parseInt(cust);
+	public String getBookings(@PathParam("CustomerId") int CustomerId) {
+		//int CustomerId = Integer.parseInt(cust);
 		EntityManager em =Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
-		Query query = em.createQuery("SELECT b, bd FROM Bookings b JOIN BookingDetails db ON b.BookingId=bd.BookingId" + 
-							"WHERE b.BookingId = " + CustomerId);
-		List<BookingOld> bookings = query.getResultList();
+		Query query = em.createQuery("SELECT b FROM Booking b WHERE b.customerId = " + CustomerId);
+		List<Booking> bookings = query.getResultList();
 		
 		Gson gson = new Gson();
-		Type type = new TypeToken<List<BookingOld>>() {}.getType();
+		Type type = new TypeToken<List<Booking>>() {}.getType();
 		
 		String jsonString = gson.toJson(bookings, type);
+		em.close();
+		
+		return jsonString;
+	}
+	
+	//gets the individual booking's details
+	@GET
+	@Path("/getbookingdetails/{ BookingId }")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getBookingDetails(@PathParam("BookingId") int BookingId) {
+		EntityManager em =Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
+		Query query = em.createQuery("SELECT b FROM Bookingdetail b WHERE b.booking = " + BookingId);
+		List<Bookingdetail> bookingDetails = query.getResultList();
+		
+		Gson gson = new Gson();
+		Type type = new TypeToken<List<Bookingdetail>>() {}.getType();
+		
+		String jsonString = gson.toJson(bookingDetails, type);
 		em.close();
 		
 		return jsonString;

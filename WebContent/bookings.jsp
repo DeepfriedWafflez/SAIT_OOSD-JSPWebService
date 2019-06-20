@@ -13,7 +13,8 @@
        <div class="row align-items-center text-center">
           <div class="col-md">
             <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Bookings</h2>
-          </div> 
+          </div>
+          <jsp:include page="BookingsContent.jsp" /> 
        </div>
    	 </div>
    	    

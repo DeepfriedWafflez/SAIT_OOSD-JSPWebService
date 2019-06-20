@@ -30,7 +30,6 @@ public class BookingOld implements Serializable {
 	@Id
 	private int BookingId;
 	private Date BookingDate;
-	private String BookingNo;
 	private int TravelerCount;
 	private int CustomerId;
 	
@@ -55,7 +54,6 @@ public class BookingOld implements Serializable {
 	//getters
 	public int getBookingId() { return BookingId; }
 	public Date getBookingDate() { return BookingDate; }
-	public String getBookingNo() { return BookingNo; }
 	public int getTravelerCount() { return TravelerCount; } 
 	public int getCustomerId() { return CustomerId; }
 	

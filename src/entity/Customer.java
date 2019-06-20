@@ -15,6 +15,8 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name="CUSTOMERS_CUSTOMERID_GENERATOR" )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CUSTOMERS_CUSTOMERID_GENERATOR")
 	private int customerId;
 
 	private int agentId;
@@ -35,10 +37,13 @@ public class Customer implements Serializable {
 
 	private String custLastName;
 
+	private String custPassword;
+
 	private String custPostal;
 
 	private String custProv;
 
+	private String custUsername;
 
 	public Customer() {
 	}
@@ -123,6 +128,14 @@ public class Customer implements Serializable {
 		this.custLastName = custLastName;
 	}
 
+	public String getCustPassword() {
+		return this.custPassword;
+	}
+
+	public void setCustPassword(String custPassword) {
+		this.custPassword = custPassword;
+	}
+
 	public String getCustPostal() {
 		return this.custPostal;
 	}
@@ -139,5 +152,12 @@ public class Customer implements Serializable {
 		this.custProv = custProv;
 	}
 
+	public String getCustUsername() {
+		return this.custUsername;
+	}
+
+	public void setCustUsername(String custUsername) {
+		this.custUsername = custUsername;
+	}
 
 }

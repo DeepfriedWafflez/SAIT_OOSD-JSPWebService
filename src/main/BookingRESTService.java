@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import entity.Bookings;
+import entity.BookingOld;
 
 @SuppressWarnings("unchecked")
 @Path("/bookings")
@@ -29,10 +29,10 @@ public class BookingRESTService {
 		EntityManager em =Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
 		Query query = em.createQuery("SELECT b, bd FROM Bookings b JOIN BookingDetails db ON b.BookingId=bd.BookingId" + 
 							"WHERE b.BookingId = " + CustomerId);
-		List<Bookings> bookings = query.getResultList();
+		List<BookingOld> bookings = query.getResultList();
 		
 		Gson gson = new Gson();
-		Type type = new TypeToken<List<Bookings>>() {}.getType();
+		Type type = new TypeToken<List<BookingOld>>() {}.getType();
 		
 		String jsonString = gson.toJson(bookings, type);
 		em.close();

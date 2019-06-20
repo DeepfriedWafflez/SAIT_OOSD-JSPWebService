@@ -17,7 +17,7 @@ import javax.persistence.Table;
 //@NamedQueries({
 //@NamedQuery(name="Bookings.findAll", query="SELECT b FROM Bookings b"),
 //@NamedQuery(name="BookingDetails.findAll", query="SELECT bd FROM BookingDetails bd")})
-public class Bookings implements Serializable {
+public class BookingOld implements Serializable {
 	/*
 	* Purpose: Bookings object to store database properties
 	* Made by: Brent Ward
@@ -49,7 +49,7 @@ public class Bookings implements Serializable {
 	private double BasePrice;
 	
 	
-	public Bookings() {}
+	public BookingOld() {}
 	
 	//getters
 	public int getBookingId() { return BookingId; }

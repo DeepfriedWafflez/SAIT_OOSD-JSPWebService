@@ -13,9 +13,6 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="index.jsp">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="packages.jsp">Packages</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="services.html">Agents</a></li> -->
-<!--             <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="register.jsp">Register</a></li> -->
             <li class="nav-item dropdown">
 		       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          Account
@@ -25,12 +22,10 @@
 		          <a class="dropdown-item" href="register.jsp">Register</a>
 		          <a class="dropdown-item" href="profile.jsp">Profile</a>
 		          <a class="dropdown-item" href="bookings.jsp">Bookings</a>
-<!-- 		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="#">Something else here</a> -->
+		          <a class="dropdown-item" href="">logout</a>
 		       </div>
 		    </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- END nav -->

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<!-- 
+Authors: Ibraheem, Brent, Linda, Guido
+Purpose: UI/UX
+Date: 19/06/2019
+ -->
     
     <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
       <div class="container">

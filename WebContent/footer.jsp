@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    
+<!-- 
+Authors: Ibraheem, Brent, Linda, Guido
+Purpose: UI/UX
+Date: 19/06/2019
+ -->
     
     <footer class="probootstrap_section probootstrap-border-top">
       <div class="container">

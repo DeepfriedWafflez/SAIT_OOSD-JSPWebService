@@ -12,7 +12,7 @@ import helpers.ValidateCust;
 /**
  * Servlet implementation class RegistrationController
  */
-@WebServlet("/RegistrationController")
+@WebServlet("/register")
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

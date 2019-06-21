@@ -30,7 +30,6 @@
             </blockquote>
           </div>
         </div>
-        
       </div>
     </section>
     

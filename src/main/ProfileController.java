@@ -39,6 +39,11 @@ public class ProfileController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		// session.cust != null ---> else throws a null exception
+		// update set ?,?,?,? on customers where custId = session.cust.custId
+		// setText(username)
+		// setText(address) ... bla bla bla
 	}
 
 }

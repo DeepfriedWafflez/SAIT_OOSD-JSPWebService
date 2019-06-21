@@ -48,7 +48,7 @@ public class BookingRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBookingDetails(@PathParam("BookingId") int BookingId) {
 		EntityManager em =Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
-		Query query = em.createQuery("SELECT b FROM Bookingdetail b WHERE b.booking = " + BookingId);
+		Query query = em.createQuery("SELECT b FROM Bookingdetail b WHERE b.bookingId = " + BookingId);
 		List<Bookingdetail> bookingDetails = query.getResultList();
 		
 		Gson gson = new Gson();

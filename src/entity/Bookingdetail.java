@@ -17,13 +17,13 @@ public class Bookingdetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="BOOKINGDETAILS_BOOKINGDETAILID_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BOOKINGDETAILS_BOOKINGDETAILID_GENERATOR")
 	private int bookingDetailId;
 
 	private BigDecimal agencyCommission;
 
 	private BigDecimal basePrice;
+
+	private int bookingId;
 
 	private String classId;
 
@@ -46,11 +46,6 @@ public class Bookingdetail implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date tripStart;
-
-	//bi-directional many-to-one association to Booking
-	@ManyToOne
-	@JoinColumn(name="BookingId")
-	private Booking booking;
 
 	public Bookingdetail() {
 	}
@@ -77,6 +72,14 @@ public class Bookingdetail implements Serializable {
 
 	public void setBasePrice(BigDecimal basePrice) {
 		this.basePrice = basePrice;
+	}
+
+	public int getBookingId() {
+		return this.bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public String getClassId() {
@@ -149,14 +152,6 @@ public class Bookingdetail implements Serializable {
 
 	public void setTripStart(Date tripStart) {
 		this.tripStart = tripStart;
-	}
-
-	public Booking getBooking() {
-		return this.booking;
-	}
-
-	public void setBooking(Booking booking) {
-		this.booking = booking;
 	}
 
 }

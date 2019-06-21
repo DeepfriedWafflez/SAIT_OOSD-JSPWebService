@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BookingsContent</title>
+<script src='https://unpkg.com/vue'></script>
 <script type='text/javascript' src='js/BookingsPopulate.js'></script>
 </head>
 <body>
-	<button id="BookingsButton" onclick="populate()"></button>
-	<table id="BookingsContainer">
-	</table>
+
+<div id="app">
+	
+</div>
+
 </body>
 </html>

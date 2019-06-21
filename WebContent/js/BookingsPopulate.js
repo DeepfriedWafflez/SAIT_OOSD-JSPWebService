@@ -1,9 +1,7 @@
-/**
- * 
- */
+/*
 
 function populate(){
-	var customerId;
+	var customerId = 143;
 	var xhttp = new XMLHttpRequest();
 	
 	xhttp.onreadystatechange = function() {
@@ -26,36 +24,41 @@ function populate(){
 		      
 		      //building the booking
 		      let ItineraryNo = document.createElement('td');
-		      ItineraryNo.text = bookings[i].ItineraryNo;
+		      ItineraryNo.text = bookings[i].itineraryNo;
 		      booking.add(ItineraryNo);
 		      
 		      let BookingDate = document.createElement('td');
-		      BookingDate.text = bookings[i].BookingDate;
+		      BookingDate.text = bookings[i].bookingDate;
 		      booking.add(BookingDate);
 		      
 		      let TravelerCount = document.createElement('td');
-		      TravelerCount.text = bookings[i].TravelerCount;
+		      TravelerCount.text = bookings[i].travelerCount;
 		      booking.add(TravelerCount);
 		      
 		      let TripStart = document.createElement('td');
-		      TripStart.text = bookings[i].TripStart;
+		      TripStart.text = bookings[i].tripStart;
 		      booking.add(TripStart);
 		      
 		      let TripEnd = document.createElement('td');
-		      TripEnd.text = bookings[i].TripEnd;
+		      TripEnd.text = bookings[i].tripEnd;
 		      booking.add(TripEnd);
 		      
 		      let Description = document.createElement('td');
-		      Description.text = bookings[i].Description;
+		      Description.text = bookings[i].description;
 		      booking.add(Description);
 		      
 		      let Destination = document.createElement('td');
-		      Destination.text = bookings[i].Destination;
+		      Destination.text = bookings[i].destination;
 		      booking.add(Destination);
 		      
 		      let BasePrice = document.createElement('td');
-		      BasePrice.text = bookings[i].BasePrice;
+		      BasePrice.text = bookings[i].basePrice;
 		      booking.add(BasePrice);
+		      
+		      let BookingId = document.createElement('button')
+		      BookingId.text = "Details";
+		      BookingId.value = bookings[i].bookingId;
+		      booking.add(BookingId);
 		      
 
 		      //adds the booking to the table
@@ -65,4 +68,29 @@ function populate(){
 		}
 	
 	xhttp.send();
-}
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,6 @@ package entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -17,8 +16,6 @@ public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="BOOKINGS_BOOKINGID_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BOOKINGS_BOOKINGID_GENERATOR")
 	private int bookingId;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -33,10 +30,6 @@ public class Booking implements Serializable {
 	private double travelerCount;
 
 	private String tripTypeId;
-
-	//bi-directional many-to-one association to Bookingdetail
-	@OneToMany(mappedBy="booking")
-	private List<Bookingdetail> bookingdetails;
 
 	public Booking() {
 	}
@@ -95,28 +88,6 @@ public class Booking implements Serializable {
 
 	public void setTripTypeId(String tripTypeId) {
 		this.tripTypeId = tripTypeId;
-	}
-
-	public List<Bookingdetail> getBookingdetails() {
-		return this.bookingdetails;
-	}
-
-	public void setBookingdetails(List<Bookingdetail> bookingdetails) {
-		this.bookingdetails = bookingdetails;
-	}
-
-	public Bookingdetail addBookingdetail(Bookingdetail bookingdetail) {
-		getBookingdetails().add(bookingdetail);
-		bookingdetail.setBooking(this);
-
-		return bookingdetail;
-	}
-
-	public Bookingdetail removeBookingdetail(Bookingdetail bookingdetail) {
-		getBookingdetails().remove(bookingdetail);
-		bookingdetail.setBooking(null);
-
-		return bookingdetail;
 	}
 
 }

@@ -4,7 +4,11 @@
 
 <jsp:include page="nav.jsp" />
 
-
+<!-- 
+Authors: Ibraheem, Brent, Linda, Guido
+Purpose: UI/UX
+Date: 19/06/2019
+ -->
 
 <section class="probootstrap-cover overflow-hidden relative" style="background-image: url('images/profile3.jpg'); max-height: 450px;" data-stellar-background-ratio="0.5" id="section-home">
    <div class="overlay"></div>

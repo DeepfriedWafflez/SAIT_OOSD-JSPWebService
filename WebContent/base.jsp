@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
+<!-- 
+Authors: Ibraheem, Brent, Linda, Guido
+Purpose: UI/UX
+Date: 19/06/2019
+ -->
 <html>
 	<head>
 	<meta charset="utf-8">

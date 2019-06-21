@@ -82,7 +82,7 @@ Date: 19/06/2019
             </a>
           </div>
         </div>
-        <a href="packages.jsp"> <button class="btn btn-outline-primary btn-block text-uppercase"> More </button></a>
+        <a href="packagedeals"> <button class="btn btn-outline-primary btn-block text-uppercase"> More </button></a>
       </div>
     </section>
     

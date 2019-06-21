@@ -18,27 +18,8 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-<!--   <servlet>
-    <servlet-name>Registration Controller</servlet-name>
-  	<servlet-class>RegistrationController</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Login Controller</servlet-name>
-  	<servlet-class>LoginController</servlet-class>
-  </servlet>
- -->
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
-  
-<!--   <servlet-mapping>
-    <servlet-name>Registration Controller</servlet-name>
-    <url-pattern>/RegistrationController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Login Controller</servlet-name>
-    <url-pattern>/LoginController</url-pattern>
-  </servlet-mapping> -->  
-  
 </web-app>

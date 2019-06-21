@@ -30,29 +30,27 @@ Date: 19/06/2019
           <div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
           	<div class="row">
           	<div class="col-md-6">
-	            <form action="#" method="post" class="mb60" style="min-height:500px;">
+	            <form action="login" method="post" class="mb60" style="min-height:500px;">
 	              <br>
 	              <br>
 	              <div class="mb-3">
-<!-- 	                <div class="col-md-6"> -->
 	                  <div class="form-group">
 	                    <label for="fname" class="sr-only">Username</label>
-	                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Username Email">
-<!-- 	                  </div> -->
+	                    <input type="text" class="form-control" id="fname" name="username" placeholder="Username" value="${username}">
+	                    <span style="color:red;">${fieldErrorUsername}</span>
 	                </div>
 	              </div>
 	              <br>
 	              <div class="mb-3">
-<!-- 	                <div class="col-md-6"> -->
 	                  <div class="form-group">
 	                    <label for="lname" class="sr-only sr-only-focusable">Password</label>
-	                    <input type="password" class="form-control" id="lname" name="lname" placeholder="Password">
+	                    <input type="password" class="form-control" id="lname" name="password" placeholder="Password" value="${password}">
+	                   	<span style="color:red;">${fieldErrorPassword}</span>
 	                  </div>
-	                <!-- </div> -->
 	              </div>
 	              
 	              <br>
-	              <p>Don't have an account, please <a href='register.jsp'>signup</a>  </p>
+	              <p>Don't have an account, please <a href='register'>signup</a>  </p>
 	              <div class="form-group">
 	                <input type="submit" class="btn btn-outline-primary btn-sm" id="submit" name="submit" value="Login">
 	              </div>

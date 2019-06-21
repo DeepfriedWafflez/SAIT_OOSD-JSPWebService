@@ -32,7 +32,7 @@ Date: 19/06/2019
           <div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
           	<div class="row">
           	<div class="col-md-6">
-	            <form action="RegistrationController" method="post" class="mb60" style="min-height:500px;">
+	            <form action="register" method="post" class="mb60" style="min-height:500px;">
 	              <br>
 	              <br>
 	               <% String nonFieldError = (String) request.getAttribute("nonFieldError");
@@ -86,7 +86,7 @@ Date: 19/06/2019
 	                  </div>
 	              </div>
 	              <br>
-	              <p>Already have an account, please <a href='login.jsp'>login</a>  </p>
+	              <p>Already have an account, please <a href='login'>login</a> </p>
 	              <div class="form-group">
 	                <input type="submit" class="btn btn-outline-primary btn-sm" id="submit" name="submit" value="Signup">
 	              </div>

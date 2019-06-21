@@ -62,8 +62,10 @@ public class RegistrationController extends HttpServlet {
 				ValidateCust.isValidEmail(Email)
 				)
 		{
-			 //	response.sendRedirect("login.jsp");
+			//	response.sendRedirect("login.jsp");
+			
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				
 		} 
 		else 
 		{			

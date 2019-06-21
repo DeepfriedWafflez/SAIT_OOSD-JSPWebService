@@ -67,10 +67,18 @@ public class ValidateCust {
 		}
 	}
 	
-	public static Boolean userExists(Customer cust) {
-		// TO-DO: use JPA to check if username or 
+	public static Boolean userNameExists(String str) {
+		// TO-DO: use JPA to check if username 
+		// already exists in the database
+						
+		return false;
+	}
+	
+	public static Boolean userEmailExists(String str) {
+		
+		// TO-DO: use JPA to check if  
 		// email already exists in the database
-				
+		
 		return false;
 	}
 	

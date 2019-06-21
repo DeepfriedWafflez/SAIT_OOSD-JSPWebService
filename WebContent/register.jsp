@@ -28,34 +28,57 @@
           <div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
           	<div class="row">
           	<div class="col-md-6">
-	            <form action="#" method="post" class="mb60" style="min-height:500px;">
+	            <form action="RegistrationController" method="post" class="mb60" style="min-height:500px;">
 	              <br>
 	              <br>
+	               <% String nonFieldError = (String) request.getAttribute("nonFieldError");
+	              
+	              if (nonFieldError != null)
+	              {
+	            	  if (!(nonFieldError.trim().equals(""))) {
+	              
+	            	%> 
+	         	  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+					   <strong><%= nonFieldError  %></strong>
+					   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					     <span aria-hidden="true">&times;</span>
+					   </button>
+				  	  </div> 
+	            <%
+	               }
+	              }
+	            %>				  
+				
+				  <br>
 	              <div class="mb-3">
 	                  <div class="form-group">
 	                    <label for="fname" class="sr-only">Email</label>
-	                    <input type="email" class="form-control" id="fname" name="fname" placeholder="Email">
+	                    <input type="email" class="form-control" id="fname" name="email" placeholder="Email" value="${email}">
+	                    <span style="color:red;">${fieldErrorEmail}</span>
 	                </div>
 	              </div>
 	              <br>
 	              <div class="mb-3">
 	                  <div class="form-group">
 	                    <label for="lname" class="sr-only sr-only-focusable">Username</label>
-	                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Username">
+	                    <input type="text" class="form-control" id="lname" name="username" placeholder="Username" value="${username}">
+	                    <span style="color:red;">${fieldErrorUsername}</span>
 	                  </div>
 	              </div>
 	              <br>
 	              <div class="mb-3">
 	                  <div class="form-group">
 	                    <label for="lname" class="sr-only sr-only-focusable">Password</label>
-	                    <input type="password" class="form-control" id="lname" name="lname" placeholder="Password">
+	                    <input type="password" class="form-control" id="lname" name="password1" placeholder="Password" value="${password1}">
+	                    <span style="color:red;">${fieldErrorPass1}</span>
 	                  </div>
 	              </div>
 	              <br>
 	              <div class="mb-3">
 	                  <div class="form-group">
 	                    <label for="lname" class="sr-only sr-only-focusable">Confirm Password</label>
-	                    <input type="password" class="form-control" id="lname" name="lname" placeholder="Confirm Password">
+	                    <input type="password" class="form-control" id="lname" name="password2" placeholder="Confirm Password" value="${password2}">
+	                    <span style="color:red;">${fieldErrorPass2}</span>
 	                  </div>
 	              </div>
 	              <br>

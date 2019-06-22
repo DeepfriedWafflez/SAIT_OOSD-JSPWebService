@@ -101,7 +101,7 @@ public class RegistrationController extends HttpServlet {
 				} catch(Exception e) {
 					e.printStackTrace();
 					
-					request.setAttribute("exceptionError", "Registration failed, our engineers have be notified.");
+					request.setAttribute("exceptionError", "Registration failed, our engineers have be notified. Please try again.");
 					
 					request.getRequestDispatcher("/register.jsp").forward(request, response);
 				}

@@ -16,9 +16,8 @@ Date: 19/06/2019
 	              
 	    if (loggedout != null)
 	              {
-	            	  if (!(loggedout.trim().equals(""))) {
 	              
-	   %> 
+	   		%> 
 	         	  <div class="alert alert-success alert-dismissible fade show" role="alert">
 					   <strong><%= loggedout  %></strong>
 					   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -27,7 +26,6 @@ Date: 19/06/2019
 				  	  </div> 
 	            <%
 	               }
-	              }
 	   %>
       <div class="container">
         <div class="row align-items-center">

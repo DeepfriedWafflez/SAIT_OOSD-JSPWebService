@@ -1,13 +1,19 @@
 package main;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Customer;
+import helpers.DBHelper;
 import helpers.ValidateCust;
+
 
 /**
  * Servlet implementation class RegistrationController
@@ -59,11 +65,47 @@ public class RegistrationController extends HttpServlet {
 				ValidateCust.isValidString(Password1) &&
 				ValidateCust.isValidString(Password2) &&
 				ValidateCust.isValidPassword(Password1, Password2) &&
-				ValidateCust.isValidEmail(Email)
+				ValidateCust.isValidEmail(Email) &&
+				ValidateCust.userNameExists(Username) && 
+				ValidateCust.userEmailExists(Email)
 				)
 		{
-			 //	response.sendRedirect("login.jsp");
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				try {
+					EntityManager em = DBHelper.getManager();
+					
+					String hashedPass;
+					
+					Customer customer = new Customer();
+					customer.setCustFirstName("");
+					customer.setCustLastName("");
+					customer.setCustAddress("");
+					customer.setCustCity("");
+					customer.setCustProv("");
+					customer.setCustPostal("");
+					customer.setCustCountry("");
+					customer.setCustHomePhone("");
+					customer.setCustBusPhone("");
+					customer.setCustEmail(Email);
+					customer.setCustUsername(Username);
+					customer.setCustPassword(Password1);
+
+					em.getTransaction().begin();
+					em.persist(customer);
+					em.getTransaction().commit();
+					em.close();
+					
+					request.setAttribute("success", "Your account was successfully created.");
+				 	// response.sendRedirect("login.jsp");
+					request.getRequestDispatcher("/login.jsp").forward(request, response);
+					
+				} catch(Exception e) {
+					e.printStackTrace();
+					
+					request.setAttribute("exceptionError", "Registration failed, our engineers have be notified.");
+					
+					request.getRequestDispatcher("/register.jsp").forward(request, response);
+				}
+
 		} 
 		else 
 		{			
@@ -79,9 +121,14 @@ public class RegistrationController extends HttpServlet {
 					request.setAttribute("fieldErrorEmail", ValidateCust.fieldError.get(Email));
 				} else if (ValidateCust.isValidEmail(Email) == false) {
 					request.setAttribute("fieldErrorEmail", ValidateCust.fieldError.get(Email));
+				} 
+				else if (ValidateCust.userEmailExists(Email) == false) {
+					request.setAttribute("fieldErrorEmail", ValidateCust.fieldError.get(Email));
 				}
 				
 				if (Username.trim().isEmpty()) {
+					request.setAttribute("fieldErrorUsername", ValidateCust.fieldError.get(Username));
+				} else if (ValidateCust.userNameExists(Username) == false) {
 					request.setAttribute("fieldErrorUsername", ValidateCust.fieldError.get(Username));
 				}
 				if (Password1.trim().isEmpty()) {

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 
 <jsp:include page="base.jsp" />
 
@@ -33,6 +35,43 @@ Date: 19/06/2019
 	            <form action="login" method="post" class="mb60" style="min-height:500px;">
 	              <br>
 	              <br>
+	              
+	              <% String nonFieldError = (String) request.getAttribute("nonFieldError");
+	              
+	              if (nonFieldError != null)
+	              {
+	            	  if (!(nonFieldError.trim().equals(""))) {
+	              
+	              %> 
+		         	  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+						   <strong><%= nonFieldError  %></strong>
+						   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						     <span aria-hidden="true">&times;</span>
+						   </button>
+					  	  </div> 
+		          <%
+		               }
+		              }
+		          %>
+		          
+		          <% String success = (String) request.getAttribute("success");
+	              
+	              if (success != null)
+	              {
+	            	  if (!(success.trim().equals(""))) {
+	              
+	            	%> 
+	         	  <div class="alert alert-success alert-dismissible fade show" role="alert">
+					   <strong><%= success  %></strong>
+					   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					     <span aria-hidden="true">&times;</span>
+					   </button>
+				  	  </div> 
+	            <%
+	               }
+	              }
+	            %>	
+	              
 	              <div class="mb-3">
 	                  <div class="form-group">
 	                    <label for="fname" class="sr-only">Username</label>

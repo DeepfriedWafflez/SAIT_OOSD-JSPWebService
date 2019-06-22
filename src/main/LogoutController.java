@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LogoutController
@@ -29,7 +30,11 @@ public class LogoutController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=UTF-8");
 		
-//		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		//	request.getRequestDispatcher("/index.jsp").forward(request, response);
+		
+        HttpSession session=request.getSession();  
+        session.invalidate();
+        request.setAttribute("loggedout", "You successfully logged out.");
 		response.sendRedirect("home");
 	}
 

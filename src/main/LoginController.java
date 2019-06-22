@@ -6,7 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import entity.Customer;
+import helpers.AuthenticateCust;
 import helpers.ValidateCust;
 
 /**
@@ -45,13 +48,30 @@ public class LoginController extends HttpServlet {
 		String Password = request.getParameter("password");
 		
 		if (ValidateCust.isValidString(Username) &&
-				ValidateCust.isValidString(Password)) 
+				ValidateCust.isValidString(Password) && 
+				ValidateCust.enterValidCredentials(Username, Password)) 
 		{
-			request.getRequestDispatcher("/profile.jsp").forward(request, response);
+			
+			HttpSession session = request.getSession();
+			
+			Customer customer = AuthenticateCust.authenticate(Username, Password);
+			
+			if (customer != null) {
+				
+				session.setAttribute("customer", customer);
+				request.getRequestDispatcher("/profile.jsp").forward(request, response);
+				
+			} else {
+				
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				
+			}
+			
+
 		}
 		else {
 			request.setAttribute("username", Username);
-			request.setAttribute("password1", Password);
+			request.setAttribute("password", Password);
 			
 			if(ValidateCust.fieldError.size() != 0) {
 				
@@ -62,6 +82,10 @@ public class LoginController extends HttpServlet {
 				if (Password.trim().isEmpty()) {
 					request.setAttribute("fieldErrorPassword", ValidateCust.fieldError.get(Password));
 				}
+			}
+			
+			if (!ValidateCust.nonFieldError.trim().equals("")) {
+				request.setAttribute("nonFieldError", ValidateCust.nonFieldError);
 			}
 			
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

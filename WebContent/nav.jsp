@@ -23,11 +23,20 @@ Date: 19/06/2019
 		          Account
 		       </a>
 		       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		       	 <%
+					if(session.getAttribute("customer") == null){
+				 %>		
 		          <a class="dropdown-item" href="login">Login</a>
 		          <a class="dropdown-item" href="register">Register</a>
-		          <a class="dropdown-item" href="profile">Profile</a>
+		         <%
+		         } else {
+				 %>		
+				  <a class="dropdown-item" href="profile">Profile</a>
 		          <a class="dropdown-item" href="bookings">Bookings</a>
 		          <a class="dropdown-item" href="logout">logout</a>
+		         <% 
+					}
+		          %>
 		       </div>
 		    </li>
           </ul>

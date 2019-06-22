@@ -2,10 +2,16 @@ package helpers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.NoResultException;
 import entity.Customer;
+
 
 
 public class ValidateCust {
@@ -70,17 +76,81 @@ public class ValidateCust {
 	public static Boolean userNameExists(String str) {
 		// TO-DO: use JPA to check if username 
 		// already exists in the database
-						
-		return false;
+				
+		try {
+			EntityManager em = DBHelper.getManager();
+			Query query = em.createQuery("SELECT c FROM Customer c where c.custUsername like :userName").setParameter("userName", str);
+			Customer customer = (Customer) query.getSingleResult();
+			
+			invalidData.add(str);
+			fieldError.put(str, "Sorry this username is already taken. Please try again.");
+			
+			return false;
+		
+		} catch (NoResultException noresult) {
+			
+			fieldError.remove(str);
+			invalidData.clear();
+			return true;
+		}
+		
 	}
 	
 	public static Boolean userEmailExists(String str) {
 		
-		// TO-DO: use JPA to check if  
-		// email already exists in the database
+		// TO-DO: This is repetitive, collapse to one during refactoring
+				
+		try {
+			EntityManager em = DBHelper.getManager();
+			Query query = em.createQuery("SELECT c FROM Customer c where c.custEmail like :userEmail").setParameter("userEmail", str);
+			Customer customer = (Customer) query.getSingleResult();
+			
+			invalidData.add(str);
+			fieldError.put(str, "Sorry this email is already taken. Please try again");
+			
+			return false;
 		
-		return false;
+		} catch (NoResultException noresult) {
+			
+			fieldError.remove(str);
+			invalidData.clear();
+			return true;
+		}
+
 	}
+	
+	public static Boolean enterValidCredentials(String usr, String pwd) {
+
+		// Check for password matching username and user actually being in the database
+		EntityManager em = DBHelper.getManager();
+		Query query = em.createQuery(
+				"SELECT c.custPassword FROM Customer c where c.custUsername like :userName")
+				.setParameter("userName", usr);
+		
+		
+		try {
+			//	Customer customer = (Customer) query.getSingleResult();
+			
+			String custPass = (String) query.getSingleResult();
+			
+			if (custPass.equals(pwd)) {
+				nonFieldError = "";
+				validatedData.add(pwd);
+				invalidData.clear();
+				return true;
+			} else {
+				nonFieldError = "Please provide a valid username and password.";
+				invalidData.add(pwd);
+				return false;
+			}
+		} catch (NoResultException noresult) {
+			nonFieldError = "Please provide a valid username and password.";
+			invalidData.add(usr);
+			return false;
+		}
+		
+	}
+	
 	
 	public static Boolean isValidNonSQLScript() {
 		

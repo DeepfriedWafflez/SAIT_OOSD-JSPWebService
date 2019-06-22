@@ -11,7 +11,24 @@ Date: 19/06/2019
  -->
 
 <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('images/travel6.jpg'); min-height: 650px;" data-stellar-background-ratio="0.5"  id="section-home">
-      <div class="overlay"></div> 
+	  <div class="overlay"></div> 
+	  <% String loggedout = (String) request.getAttribute("loggedout");
+	              
+	    if (loggedout != null)
+	              {
+	            	  if (!(loggedout.trim().equals(""))) {
+	              
+	   %> 
+	         	  <div class="alert alert-success alert-dismissible fade show" role="alert">
+					   <strong><%= loggedout  %></strong>
+					   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					     <span aria-hidden="true">&times;</span>
+					   </button>
+				  	  </div> 
+	            <%
+	               }
+	              }
+	   %>
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md">

@@ -15,10 +15,9 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CUSTOMERS_CUSTOMERID_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CUSTOMERS_CUSTOMERID_GENERATOR")
 	private int customerId;
-
+	
+	@Column(name = "agentId", nullable = true, insertable=false)
 	private int agentId;
 
 	private String custAddress;

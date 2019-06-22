@@ -5,7 +5,10 @@ import java.lang.reflect.Type;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -39,4 +42,51 @@ public class CustomersRESTService {
 		em.close();
 		return jsonString;
 	}
+	
+	//POST 
+	@POST
+    @Path("/postcustomer")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.TEXT_PLAIN)
+    public String postCustomer(String jsonString)
+    {
+		
+//		http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer
+		
+        Gson gson = new Gson();
+        Type type = new TypeToken<Customer>() {}.getType();
+        Customer customer = gson.fromJson(jsonString, type);
+        EntityManager em =
+                Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
+
+        em.getTransaction().begin();
+        em.merge(customer);
+        em.getTransaction().commit();
+        return "Customer update completed";
+    }
+	
+	
+	
+	//PUT REST service to put customer into database (add)
+	@PUT
+	@Path("/putcustomer")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces(MediaType.TEXT_PLAIN)
+	public String putCustomer(String jsonString)
+	{
+//		http://localhost:8080/Team3-JSPWebService/rest/customers/putcustomer
+		
+		Gson gson = new Gson();
+		Type type = new TypeToken<Customer>() {}.getType();
+		Customer customer = gson.fromJson(jsonString, type);
+		EntityManager em = Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(customer);
+		em.getTransaction().commit();
+		
+		
+		return "Customer INSERT completed";
+	}
+	
 }

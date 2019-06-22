@@ -53,6 +53,22 @@ Date: 19/06/2019
 	              }
 	            %>				  
 				
+				<% String exceptionError = (String) request.getAttribute("exceptionError");
+	              
+	              if (exceptionError != null)
+	              {
+	              
+	            	%> 
+	         	  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+					   <strong><%= nonFieldError  %></strong>
+					   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					     <span aria-hidden="true">&times;</span>
+					   </button>
+				  	  </div> 
+	            <%
+	              }
+	            %>
+									
 				  <br>
 	              <div class="mb-3">
 	                  <div class="form-group">

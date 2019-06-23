@@ -16,21 +16,23 @@ public class AuthenticateCust {
 		
 		EntityManager em = DBHelper.getManager();
 		
-//		try {
+		//	try {
 		
-		String hashedPass;
+		//	String hashedPass;
 		
+		//	AND c.custPassword = :passWord
+		//	.setParameter("passWord", pass)
+
 		Query query = em.createQuery(
-					"SELECT c FROM Customer c where c.custUsername = :userName AND c.custPassword = :passWord")
-					.setParameter("userName", usr)
-					.setParameter("passWord", pass);
+					"SELECT c FROM Customer c where c.custUsername = :userName")
+					.setParameter("userName", usr);
 		Customer customer = (Customer) query.getSingleResult();
 			
 		return customer;
 			
-//		} catch(NoResultException noresult) {
-//			
-//		}
+		//	} catch(NoResultException noresult) {
+		//
+		//	}
 
 	}
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Customer;
 import helpers.DBHelper;
+import helpers.HashCustPass;
 import helpers.ValidateCust;
 
 
@@ -73,7 +74,7 @@ public class RegistrationController extends HttpServlet {
 				try {
 					EntityManager em = DBHelper.getManager();
 					
-					String hashedPass;
+					String hashedPass = HashCustPass.hashPass(Password1);
 					
 					Customer customer = new Customer();
 					customer.setCustFirstName("");
@@ -87,7 +88,9 @@ public class RegistrationController extends HttpServlet {
 					customer.setCustBusPhone("");
 					customer.setCustEmail(Email);
 					customer.setCustUsername(Username);
-					customer.setCustPassword(Password1);
+					//	customer.setCustPassword(Password1);
+					customer.setCustPassword(hashedPass);
+					
 
 					em.getTransaction().begin();
 					em.persist(customer);

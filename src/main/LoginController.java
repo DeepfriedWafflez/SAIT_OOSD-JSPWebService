@@ -50,8 +50,7 @@ public class LoginController extends HttpServlet {
 		if (ValidateCust.isValidString(Username) &&
 				ValidateCust.isValidString(Password) && 
 				ValidateCust.enterValidCredentials(Username, Password)) 
-		{
-			
+		{			
 			HttpSession session = request.getSession();
 			
 			Customer customer = AuthenticateCust.authenticate(Username, Password);

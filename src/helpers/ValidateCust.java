@@ -133,7 +133,10 @@ public class ValidateCust {
 			
 			String custPass = (String) query.getSingleResult();
 			
-			if (custPass.equals(pwd)) {
+			Boolean verified = HashCustPass.verifyPass(custPass, pwd);
+			
+			//	if (custPass.equals(pwd))
+			if (verified == true) {
 				nonFieldError = "";
 				validatedData.add(pwd);
 				invalidData.clear();

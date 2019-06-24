@@ -9,6 +9,14 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+
+
+/**
+Author: Ibraheem Kolawole
+Purpose: JWT helper util
+Date: 22/06/2019
+**/
+
 public class JWTCust {
 
 	public static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);

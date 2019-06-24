@@ -6,6 +6,13 @@ import javax.persistence.Query;
 
 import entity.Customer;
 
+/**
+Author: Ibraheem Kolawole
+Purpose: Authentication helper util
+Date: 22/06/2019
+**/
+
+
 public class AuthenticateCust {
 
 	

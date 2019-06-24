@@ -7,6 +7,13 @@ import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+/**
+Author: Ibraheem Kolawole
+Purpose: DB and EntityManager helper util
+Date: 22/06/2019
+**/
+
+
 public class DBHelper {
 	
 	public static Connection getConn() {		

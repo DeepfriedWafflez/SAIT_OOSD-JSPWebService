@@ -13,6 +13,12 @@ import javax.persistence.NoResultException;
 import entity.Customer;
 
 
+/**
+Author: Ibraheem Kolawole
+Purpose: Customer Validations helper util
+Date: 22/06/2019
+**/
+
 
 public class ValidateCust {
 	

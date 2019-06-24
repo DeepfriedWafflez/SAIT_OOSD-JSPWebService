@@ -4,7 +4,11 @@ import static com.kosprov.jargon2.api.Jargon2.*;
 
 public class HashCustPass {
 
-	
+	/**
+	Author: Ibraheem Kolawole
+	Purpose: Password hasher helper util
+	Date: 22/06/2019
+	**/	
 	
 	
 	public static String hashPass(String pass) {

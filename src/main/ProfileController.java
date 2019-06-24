@@ -11,6 +11,12 @@ import javax.servlet.http.HttpSession;
 import entity.Customer;
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Customer profile jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class ProfileController
  */
 @WebServlet("/profile")

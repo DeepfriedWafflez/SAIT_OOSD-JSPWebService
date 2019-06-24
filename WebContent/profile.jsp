@@ -209,7 +209,7 @@ Date: 19/06/2019
 							Password: <small><input type="text" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
 							       								
 								</div>								
-								</div>							
+								</div>
 							</form>
 						</div>
 					</div>

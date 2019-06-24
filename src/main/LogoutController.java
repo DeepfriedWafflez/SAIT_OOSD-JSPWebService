@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Customer logout jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class LogoutController
  */
 @WebServlet("/logout")

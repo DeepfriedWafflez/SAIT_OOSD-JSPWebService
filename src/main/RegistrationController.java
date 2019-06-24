@@ -17,6 +17,12 @@ import helpers.ValidateCust;
 
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Customer registration jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class RegistrationController
  */
 @WebServlet("/register")

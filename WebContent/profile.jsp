@@ -99,8 +99,8 @@ Date: 19/06/2019
         			</div>
         		</div>
         	</div>        	
-
 			
+					
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -115,7 +115,7 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-							<form action="login" method="post" class="mb60" style="min-height:500px;">							
+							<form action="" method="post" class="mb60" style="min-height:500px;">							
 					          	<div class="col-md-6">
 							        <br>
 						            <br>								
@@ -161,7 +161,7 @@ let bookings = new Vue({
 					
 			axios({
 				method: "GET",
-				url: "http://localhost:8080/Team3-JSPWebService/rest/bookings/getbookings/143"})
+				url: "http://localhost:8080/Team3-JSPWebService/rest/bookings/getbookings/" + ${custProf.getCustomerId()}})
 				.then(response => {
 					this.bookings = response.data;
 				})

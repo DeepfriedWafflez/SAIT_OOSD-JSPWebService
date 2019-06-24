@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import entity.Customer;
 
 /**
  * Servlet implementation class ProfileController
@@ -29,6 +32,15 @@ public class ProfileController extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html; charset=UTF-8");
+		
+		HttpSession session = request.getSession();
+		
+		Customer customer = (Customer) session.getAttribute("customer");
+		
+		if (customer != null)
+		{
+			request.setAttribute("custProf", customer);
+		}
 		
 		request.getRequestDispatcher("/profile.jsp").forward(request, response);
 	}

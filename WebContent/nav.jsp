@@ -32,7 +32,7 @@ Date: 19/06/2019
 		         } else {
 				 %>		
 				  <a class="dropdown-item" href="profile">Profile</a>
-		          <a class="dropdown-item" href="bookings">Bookings</a>
+				  <!-- <a class="dropdown-item" href="bookings">Bookings</a> -->
 		          <a class="dropdown-item" href="logout">logout</a>
 		         <% 
 					}

@@ -43,10 +43,11 @@ public class CustomersRESTService {
 		return jsonString;
 	}
 	
-	//POST 
+	//POST Updates customer information
 	@POST
     @Path("/postcustomer")
-    @Consumes({MediaType.APPLICATION_JSON})
+   @Consumes({MediaType.APPLICATION_JSON})
+	//@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Produces(MediaType.TEXT_PLAIN)
     public String postCustomer(String jsonString)
     {

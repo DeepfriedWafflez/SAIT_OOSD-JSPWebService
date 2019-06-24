@@ -10,10 +10,44 @@
 	}
 	
 %>
+
+
     
 <jsp:include page="base.jsp" />
 
 <jsp:include page="nav.jsp" />
+
+<script>
+//javascript function to send customer data to database
+function postCustomerJS()
+	{
+		var url = "http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer";
+		$.ajax({
+			url:url,
+			dataType: "json",
+			method:"POST",
+			 {
+		        "customerId": document.getElementById("customerID").value,
+		        "custFirstName": document.getElementById("custFirstName").value,
+		        "custLastName": document.getElementById("custLastName").value,
+		        "custAddress": document.getElementById("custAddress").value,
+		        "custCity": document.getElementById("custCity").value,
+		        "custProv": document.getElementById("custProv").value,
+		        "custPostal": document.getElementById("custPostal").value,
+		        "custHomePhone": document.getElementById("custHomePhone").value,
+		        "custBusPhone": document.getElementById("custBusPhone").value,
+		        "custEmail": document.getElementById("custEmail").value,
+		        "custCountry": document.getElementById("custCountry").value,
+		        "custPassword": document.getElementById("custPassword").value,
+		        "custUsername": document.getElementById("custUsername").value,
+		        "agentId": document.getElementById("agentId").value
+		    }
+	   // contentType: "application/json; charset=utf-8",
+	   
+
+		});
+	}
+</script>
 
 <!-- 
 Authors: Ibraheem, Brent, Linda, Guido
@@ -115,20 +149,37 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-							<form action="login" method="post" class="mb60" style="min-height:500px;">							
+			          	
+			          	
+							<form action="http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer" method="post" class="mb60" style="min-height:500px;">							
 					          	<div class="col-md-6">
-							        <br>
-						            <br>								
+					          	
+					          	
+					        Customer Id: <small></small><input type"text" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>  	
+					        First Name: <small><input type="text" class="mb-3" id="custFirstName" ></small>
+                    		Last Name: <small><input type="text" class="mb-3" id="custLastName"value="<%= customerSess.getCustLastName() %>"></small>
+							Address: <small><input type="text" class="mb-3" id="custAddress"value="<%= customerSess.getCustAddress() %>"></small>
+							City: <small><input type="text" class="mb-3" id="custCity"value="<%= customerSess.getCustCity() %>"></small>
+							Province: <small><input type="text" class="mb-3" id="custProv"value="<%= customerSess.getCustProv() %>"></small>
+							Postal Code: <small><input type="text" class="mb-3" id="custPostal"value="<%= customerSess.getCustPostal() %>"></small>
+							Home Phone: <small><input type="text" class="mb-3" id="custHomePhone"value="<%= customerSess.getCustHomePhone() %>"></small>
+							Business Phone: <small><input type="text" class="mb-3" id="custBusPhone"value="<%= customerSess.getCustBusPhone() %>"></small>
+							Email: <small><input type="text" class="mb-3" id="custEmail"value="<%= customerSess.getCustEmail() %>"></small>
+							Agent: <small><input type="text" class="mb-3" id="custAgentId"value="<%= customerSess.getAgentId() %>"></small>
+							User Name: <small><input type="text" class="mb-3" id="custUsername"value="<%= customerSess.getCustUsername() %>"></small>
+							Password: <small><input type="text" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
+							       								
 								</div>							
-							</form>
+							
 						</div>
 					</div>
 
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary btn-small" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-outline-primary btn-small">Save changes</button>
+			        <button type="button" class="btn btn-outline-primary btn-small" onclick="postCustomerJS()" >Save changes</button>
 			      </div>
+			      </form>
 			    </div>
 			  </div>
 			</div>

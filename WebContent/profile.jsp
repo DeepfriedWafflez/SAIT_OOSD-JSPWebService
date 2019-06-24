@@ -42,7 +42,7 @@ Date: 19/06/2019
 </section>
 
 <section class="probootstrap_section bg-light" id="section-contact">
-	<div class="container">
+	<div class="container" id="booked">
 		<div class="row">
 		<%
 			if(session.getAttribute("customer") != null) {
@@ -73,7 +73,8 @@ Date: 19/06/2019
         		<div class="probootstrap-animate" style="background:white; min-height: 600px; border-radius:10px;">
         			<h3 class="profile-bookings" style="text-align: center; font-size: 35px; padding-top: 30px;">Your Bookings</h3>
         			<hr>
-        			<div id="booked">
+        			<!-- id="booked" -->
+        			<div>
         				 <table class="table table-borderless table-hover">
 							  <thead>
 							    <tr>
@@ -89,10 +90,21 @@ Date: 19/06/2019
 								  <tr v-for="booking in bookings">
 								     <td scope="row">{{booking.bookingNo}}</td>
 								     <td>{{booking.bookingDate}}</td>
-								     <td>package</td>
+								     <td v-if='packageN = booking.packageId'>{{packageName}}</td>
 								     <td>{{booking.travelerCount}}</td>
-								     <td>{{booking.tripTypeId}}</td>
-								     <td><button class="btn-outline-success btn-small">Detail</button></td>    
+									 <td v-if='tripT = booking.tripTypeId'>{{tripType}}</td>
+								     
+								     <!-- Button trigger modal booking detail -->
+									<td>
+										<button @click="getBookingDetails(booking.bookingId)" class="btn-outline-success btn-small" data-toggle="modal" data-target="#exampleModal">
+										  Detail
+										</button>
+									</td>
+								  </tr>
+								  <tr v-if="bookingDetails != null">
+								  		<span v-for="bookingDet in bookingDetails">
+								  			{{bookingDet.itenaryNo}}
+								  		</span>
 								  </tr>
 							  </tbody>
 						 </table>		
@@ -100,6 +112,67 @@ Date: 19/06/2019
         		</div>
         	</div>        	
 			
+			<!-- Modal Booking Details START!!!! -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      <div class="col-md-12 probootstrap-animate probootstrap-form-box">
+			      <div class="table-responsive-md">
+			      	<div v-if="bookingDetails != null">
+			      		<div v-for="bookingDet in bookingDetails">
+						     <table class="table table-separated">						     
+							     <tbody>
+							     	<tr>
+						               <td><strong>Itinerary No</strong></td>:<td>{{ bookingDet.itineraryNo }}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Start Date</strong></td>:<td>{{bookingDet.tripStart}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>End Date</strong></td>:<td>{{bookingDet.tripEnd}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Description</strong></td>:<td>{{bookingDet.description}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Destination</strong></td>:<td>{{bookingDet.destination}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Class</strong></td>:<td>{{bookingDet.classId}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Region</strong></td>:<td>{{bookingDet.regionId}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Base Cost</strong></td>:<td> $ {{bookingDet.basePrice}}</td>
+						            </tr>
+						            <tr>
+						                <td><strong>Total Cost</strong></td>:<td></td>
+						            </tr>
+							     </tbody>
+	  						</table>	  						
+	  						<br>
+	  						<br>
+			      		</div>  						
+  					</div>
+			      </div>
+			      <div class="modal-footer">
+					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button> -->
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			</div>
+			<!-- Modal Booking Details END!!!! -->
 					
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -115,7 +188,9 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-							<form action="http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer" method="post" class="mb60" style="min-height:500px;">							
+							<form action="" method="post" class="mb60" style="min-height:500px;">							
+					          	<div class="col-md-6">
+							        <form action="http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer" method="post" class="mb60" style="min-height:500px;">							
 					          	<div class="col-md-6">
 					          	
 					          	
@@ -133,17 +208,17 @@ Date: 19/06/2019
 							User Name: <small><input type="text" class="mb-3" id="custUsername"value="<%= customerSess.getCustUsername() %>"></small>
 							Password: <small><input type="text" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
 							       								
+								</div>								
 								</div>							
-							
+							</form>
 						</div>
 					</div>
 
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary btn-small" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-outline-primary btn-small" onclick="postCustomerJS()" >Save changes</button>
+			        <button type="button" class="btn btn-outline-primary btn-small" onclick="postCustomerJS()">Save changes</button>
 			      </div>
-			      </form>
 			    </div>
 			  </div>
 			</div>
@@ -160,12 +235,14 @@ Date: 19/06/2019
 
 <script>
 
-let bookings = new Vue({
+let book = new Vue({
 	el: "#booked",
 	data: {
 		bookings: [],
 		bookingDetails: null,
 		totalCost: null,
+		tripType: '',
+		packageName: ''
 	},
 	mounted() {
 		this.getBookings();
@@ -190,16 +267,64 @@ let bookings = new Vue({
 				method: "GET",
 				url: "http://localhost:8080/Team3-JSPWebService/rest/bookings/getbookingdetails/" + id})
 				.then(response => {
+					console.log(response.data);
 					this.bookingDetails = response.data;
 				})
 				.catch(error => {
 					console.log(error);
 				});
-			}
+			},
 	},
 	
 	computed: {
 		
+		tripT :{
+			
+			// Getter
+			get: function(){
+				return this.tripType;
+			},
+			
+			// Setter
+			set: function(trip) {
+			
+				if (trip=='B')
+				{
+					this.tripType = 'Business';
+				} else if(trip=='L')
+				{
+					this.tripType = 'Leisure';
+				} else if(trip=='G')
+				{
+					this.tripType = 'Group';
+				}
+			},	
+		},
+		
+		packageN: {
+			
+			// Getter
+			get: function(){
+				return this.packageName;
+			},
+			
+			// Setter
+			set: function(pckId){
+				if (pckId===1) {
+					this.packageName = 'Caribbean New Year';
+				} else if (pckId===2) {
+					this.packageName = 'Polynesian Paradise';
+				} else if (pckId===3) {
+					this.packageName = 'Asian Expedition';
+				} else if (pckId===4) {
+					this.packageName = 'European Vacation';
+				}
+			},
+		},
+				
+		getTotalPrice(){
+			
+		}
 	}
 })
 
@@ -207,7 +332,6 @@ let bookings = new Vue({
 
 <script>
 //javascript function to send customer data to database as a JSON string
-
 function postCustomerJS()
 	{
 		var url = "http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer";
@@ -233,7 +357,6 @@ function postCustomerJS()
 		    }
 	   // contentType: "application/json; charset=utf-8",
 	   
-
 		});
 	}
 </script>

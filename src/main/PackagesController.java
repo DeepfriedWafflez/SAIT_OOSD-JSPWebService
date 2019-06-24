@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Packages jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class PackagesController
  */
 @WebServlet("/packagedeals")

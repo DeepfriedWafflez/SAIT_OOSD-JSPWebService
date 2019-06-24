@@ -13,6 +13,12 @@ import helpers.AuthenticateCust;
 import helpers.ValidateCust;
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Customer login jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class LoginController
  */
 @WebServlet("/login")

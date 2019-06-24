@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+Author: Ibraheem Kolawole
+Purpose: Index jsp
+Date: 22/06/2019
+**/
+
+/**
  * Servlet implementation class HomeController
  */
 @WebServlet("/home")

@@ -58,7 +58,8 @@ public class LoginController extends HttpServlet {
 			if (customer != null) {
 				
 				session.setAttribute("customer", customer);
-				request.getRequestDispatcher("/profile.jsp").forward(request, response);
+				//	request.getRequestDispatcher("/profile.jsp").forward(request, response);
+				response.sendRedirect("profile");
 				
 			} else {
 				
@@ -66,7 +67,6 @@ public class LoginController extends HttpServlet {
 				
 			}
 			
-
 		}
 		else {
 			request.setAttribute("username", Username);

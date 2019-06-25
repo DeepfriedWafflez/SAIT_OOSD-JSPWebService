@@ -61,7 +61,7 @@ Date: 19/06/2019
                     		<h5 class="mb-3">Phone (Home): <small><%= customerSess.getCustHomePhone() %></small> </h5>
 	                  		<!-- <button class="btn btn-outline-warning btn-small btn-block">Settings</button> -->
 	                  		
-	                  		 <!-- Button trigger modal -->
+	                  		<!-- Button trigger modal -->
 							<button type="button" class="btn btn-outline-warning btn-small btn-block" data-toggle="modal" data-target="#exampleModalCenter">
 							  Settings
 							</button>
@@ -79,8 +79,8 @@ Date: 19/06/2019
 							  <thead>
 							    <tr>
 							      <th scope="col">Number</th>
-							      <th scope="col">Date</th>
-							      <th scope="col">Package</th>
+							      <th scope="col">Booking Date</th>
+<!-- 							      <th scope="col">Package</th> -->
 							      <th scope="col">Travelers</th>
 							      <th scope="col">Trip type</th>
 							      <th></th>
@@ -90,7 +90,7 @@ Date: 19/06/2019
 								  <tr v-for="booking in bookings">
 								     <td scope="row">{{booking.bookingNo}}</td>
 								     <td>{{booking.bookingDate}}</td>
-								     <td v-if='packageN = booking.packageId'>{{packageName}}</td>
+<!-- 								     <td v-if='packageN = booking.packageId'>{{packageName}}</td> -->
 								     <td>{{booking.travelerCount}}</td>
 									 <td v-if='tripT = booking.tripTypeId'>{{tripType}}</td>
 								     
@@ -133,10 +133,10 @@ Date: 19/06/2019
 						               <td><strong>Itinerary No</strong></td>:<td>{{ bookingDet.itineraryNo }}</td>
 						            </tr>
 						            <tr>
-						                <td><strong>Start Date</strong></td>:<td>{{bookingDet.tripStart}}</td>
+						                <td><strong>Trip Start Date</strong></td>:<td>{{bookingDet.tripStart}}</td>
 						            </tr>
 						            <tr>
-						                <td><strong>End Date</strong></td>:<td>{{bookingDet.tripEnd}}</td>
+						                <td><strong>Trip End Date</strong></td>:<td>{{bookingDet.tripEnd}}</td>
 						            </tr>
 						            <tr>
 						                <td><strong>Description</strong></td>:<td>{{bookingDet.description}}</td>
@@ -188,31 +188,91 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-							<form action="" method="post" class="mb60" style="min-height:500px;">							
-					          	<div class="col-md-6">
-							        <form   class="mb60" style="min-height:500px;">							
-					          	<div class="col-md-6">
-					          	
-					          	
-					        Customer Id: <small><input type="text" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>  	
-					        First Name: <small><input type="text" class="mb-3" id="custFirstName" value="<%= customerSess.getCustFirstName() %>"></small>
-                    		Last Name: <small><input type="text" class="mb-3" id="custLastName"value="<%= customerSess.getCustLastName() %>"></small>
-							Address: <small><input type="text" class="mb-3" id="custAddress"value="<%= customerSess.getCustAddress() %>"></small>
-							City: <small><input type="text" class="mb-3" id="custCity"value="<%= customerSess.getCustCity() %>"></small>
-							Province: <small><input type="text" class="mb-3" id="custProv"value="<%= customerSess.getCustProv() %>"></small>
-							Country: <small><input type="text" class="mb-3" id="custCountry"value="<%= customerSess.getCustCountry() %>"></small>
+						  <form action="" method="post" class="mb60" style="min-height:500px;">							
+					       
+						     				          	
+					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>
+					      <div class="mb-3">
+			                <div class="form-group">
+			                	<div class="form-row">
+				                	<div class="col-md-6">
+					                    <label for="fname" class="sr-only">Username</label>
+					                    <input type="text" class="form-control" id="custUsername" name="username" placeholder="Username" value="<%= customerSess.getCustUsername() %>">
+			                		</div>
+			                		<div class="col-md-6">
+					                    <label for="fname" class="sr-only">Email</label>
+					                    <input type="text" class="form-control" id="custEmail" name="email" placeholder="Email" value="<%= customerSess.getCustEmail() %>">
+			                		</div>
+			                	</div>
+			                </div>
+			              </div>
+			              <div class="mb-3">
+			                <div class="form-group">
+			                	<div class="form-row">
+				                	<div class="col-md-6">
+					                    <label for="fname" class="sr-only">Firts Name</label>
+					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" value="<%= customerSess.getCustFirstName() %>">
+				               		</div>
+				               		<div class="col-md-6"> 
+					                    <label for="fname" class="sr-only">Last Name</label>
+					                    <input type="text" class="form-control" id="custLastName" name="lastname" placeholder="Last Name" value="<%= customerSess.getCustLastName() %>">
+				                	</div>
+			                	</div>
+			                </div>
+			              </div>
+			              <div class="mb-3">
+			                <div class="form-group">
+			                    <label for="fname" class="sr-only">Address</label>			                    
+			                    <textarea cols="30" rows="10" class="form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"><%= customerSess.getCustAddress() %></textarea>
+			                </div>
+			              </div>
+			              <div class="mb-3">
+			                <div class="form-group">
+			                	<div class="form-row">
+				                	<div class="col-md-6">
+					                    <label for="fname" class="sr-only">Home Phone</label>
+					                    <input type="text" class="form-control" id="custHomePhone" name="homephone" placeholder="Home Phone" value="<%= customerSess.getCustHomePhone() %>">
+				               		</div>
+				               		<div class="col-md-6"> 
+					                    <label for="fname" class="sr-only">Postal Code</label>
+					                    <input type="text" class="form-control" id="custBusPhone" name="businessphone" placeholder="Business Phone" value="<%= customerSess.getCustBusPhone() %>">
+				                	</div>
+			                	</div>
+			                </div>
+			              </div>
+			              <div class="mb-3">
+			                <div class="form-group">
+			                	<div class="form-row">
+				                	<div class="col-md-6">
+					                    <label for="fname" class="sr-only">City</label>
+					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="City" value="<%= customerSess.getCustCity() %>">
+				               		</div>
+				               		<div class="col-md-6"> 
+					                    <label for="fname" class="sr-only">Province</label>
+					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Province" value="<%= customerSess.getCustProv() %>">
+				                	</div>
+			                	</div>
+			                </div>
+			              </div>
+			              <div class="mb-3">
+			                <div class="form-group">
+			                	<div class="form-row">
+				                	<div class="col-md-6">
+					                    <label for="fname" class="sr-only">Country</label>
+					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="Country" value="<%= customerSess.getCustCountry() %>">
+				               		</div>
+				               		<div class="col-md-6"> 
+					                    <label for="fname" class="sr-only">Postal Code</label>
+					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Postal Code" value="<%= customerSess.getCustPostal() %>">
+				                	</div>
+			                	</div>
+			                </div>
+			              </div>			              				              			              
+						  <small><input type="text" style="display:none;" class="mb-3" id="custAgentId"value="<%= customerSess.getAgentId() %>"></small>
 							
-							Postal Code: <small><input type="text" class="mb-3" id="custPostal"value="<%= customerSess.getCustPostal() %>"></small>
-							Home Phone: <small><input type="text" class="mb-3" id="custHomePhone"value="<%= customerSess.getCustHomePhone() %>"></small>
-							Business Phone: <small><input type="text" class="mb-3" id="custBusPhone"value="<%= customerSess.getCustBusPhone() %>"></small>
-							Email: <small><input type="text" class="mb-3" id="custEmail"value="<%= customerSess.getCustEmail() %>"></small>
-							Agent: <small><input type="text" class="mb-3" id="custAgentId"value="<%= customerSess.getAgentId() %>"></small>
-							User Name: <small><input type="text" class="mb-3" id="custUsername"value="<%= customerSess.getCustUsername() %>"></small>
-							Password: <small><input type="text" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
-							       								
-								</div>								
-								</div>
-							</form>
+						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
+							       										
+						</form>
 						</div>
 					</div>
 
@@ -361,9 +421,7 @@ function postCustomerJS()
 			        "custUsername": document.getElementById("custUsername").value,
 			        "agentId": document.getElementById("custAgentId").value
 			 })
-		
-
-        
+			 
 	   // contentType: "application/json; charset=utf-8",
 	   
 		});

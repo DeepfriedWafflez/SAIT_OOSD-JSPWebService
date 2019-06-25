@@ -22,7 +22,7 @@ Date: 22/06/2019
 @WebServlet("/profile")
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */

@@ -31,7 +31,7 @@ public class CustomersRESTService {
 	{
 		//	http://localhost:8080/Team3-JSPWebService/rest/customers/getcustomer/104
 		EntityManager em =
-				Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();		
+				Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
 
 		Query query = em.createQuery("SELECT c FROM Customer c where c.customerId = " + customerId);
 		Customer customer = (Customer) query.getSingleResult();

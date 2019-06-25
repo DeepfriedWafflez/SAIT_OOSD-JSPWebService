@@ -36,7 +36,7 @@ Date: 19/06/2019
                 <p>Cruise the caribbean and celebrate the new year. </p>
                 <h4>$5,200</h4>
                 <!-- <br> -->
-                <button class='btn btn-outline-success btn-block btn-sm'>Book now</button>
+                <button class='btn btn-outline-success btn-block btn-sm'><a href="login">Book now</a></button>
               </div>
             </div>
 
@@ -48,7 +48,7 @@ Date: 19/06/2019
                 <p>8 Day All Inclusive Hawaiian Vacation. </p>
                 <h4>$3,310</h4>
                 <!-- <br> -->
-                <button class='btn btn-outline-success btn-block btn-sm'>Book now</button>
+                <button class='btn btn-outline-success btn-block btn-sm'><a href="login">Book now</a></button>
               </div>
             </div>
 
@@ -63,7 +63,7 @@ Date: 19/06/2019
                 <p> Airfare, Hotel and Eco Tour. </p>
                 <h4>$3,100</h4>
                 <!-- <br> -->
-                <button class='btn btn-outline-success btn-block btn-sm'>Book now</button>
+                <button class='btn btn-outline-success btn-block btn-sm'><a href="login">Book now</a></button>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ Date: 19/06/2019
                 
                 <h4>$3,280</h4>
                 <!-- <br> -->
-                <button class='btn btn-outline-success btn-block btn-sm'>Book now</button>
+                <button class='btn btn-outline-success btn-block btn-sm'><a href="login">Book now</a></button>
               </div>
             </div>
 

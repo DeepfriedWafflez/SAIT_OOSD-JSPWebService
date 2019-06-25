@@ -190,16 +190,18 @@ Date: 19/06/2019
 			          	<div class="row">
 							<form action="" method="post" class="mb60" style="min-height:500px;">							
 					          	<div class="col-md-6">
-							        <form action="http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer" method="post" class="mb60" style="min-height:500px;">							
+							        <form   class="mb60" style="min-height:500px;">							
 					          	<div class="col-md-6">
 					          	
 					          	
-					        Customer Id: <small></small><input type"text" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>  	
-					        First Name: <small><input type="text" class="mb-3" id="custFirstName" ></small>
+					        Customer Id: <small><input type="text" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>  	
+					        First Name: <small><input type="text" class="mb-3" id="custFirstName" value="<%= customerSess.getCustFirstName() %>"></small>
                     		Last Name: <small><input type="text" class="mb-3" id="custLastName"value="<%= customerSess.getCustLastName() %>"></small>
 							Address: <small><input type="text" class="mb-3" id="custAddress"value="<%= customerSess.getCustAddress() %>"></small>
 							City: <small><input type="text" class="mb-3" id="custCity"value="<%= customerSess.getCustCity() %>"></small>
 							Province: <small><input type="text" class="mb-3" id="custProv"value="<%= customerSess.getCustProv() %>"></small>
+							Country: <small><input type="text" class="mb-3" id="custCountry"value="<%= customerSess.getCustCountry() %>"></small>
+							
 							Postal Code: <small><input type="text" class="mb-3" id="custPostal"value="<%= customerSess.getCustPostal() %>"></small>
 							Home Phone: <small><input type="text" class="mb-3" id="custHomePhone"value="<%= customerSess.getCustHomePhone() %>"></small>
 							Business Phone: <small><input type="text" class="mb-3" id="custBusPhone"value="<%= customerSess.getCustBusPhone() %>"></small>
@@ -334,27 +336,34 @@ let book = new Vue({
 //javascript function to send customer data to database as a JSON string
 function postCustomerJS()
 	{
-		var url = "http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer";
+		var Url = "http://localhost:8080/Team3-JSPWebService/rest/customers/postcustomer";
 		$.ajax({
-			url:url,
+			headers: { 
+		        'Accept': '*/*',
+		        'Content-Type': 'application/json' 
+		    },
+			url:Url,
 			dataType: "json",
 			method:"POST",
-			 {
-		        "customerId": document.getElementById("customerID").value,
-		        "custFirstName": document.getElementById("custFirstName").value,
-		        "custLastName": document.getElementById("custLastName").value,
-		        "custAddress": document.getElementById("custAddress").value,
-		        "custCity": document.getElementById("custCity").value,
-		        "custProv": document.getElementById("custProv").value,
-		        "custPostal": document.getElementById("custPostal").value,
-		        "custHomePhone": document.getElementById("custHomePhone").value,
-		        "custBusPhone": document.getElementById("custBusPhone").value,
-		        "custEmail": document.getElementById("custEmail").value,
-		        "custCountry": document.getElementById("custCountry").value,
-		        "custPassword": document.getElementById("custPassword").value,
-		        "custUsername": document.getElementById("custUsername").value,
-		        "agentId": document.getElementById("agentId").value
-		    }
+			 data:JSON.stringify({
+			        "customerId": document.getElementById("customerId").value,
+			        "custFirstName": document.getElementById("custFirstName").value,
+			        "custLastName": document.getElementById("custLastName").value,
+			        "custAddress": document.getElementById("custAddress").value,
+			        "custCity": document.getElementById("custCity").value,
+			        "custProv": document.getElementById("custProv").value,
+			        "custPostal": document.getElementById("custPostal").value,
+			        "custHomePhone": document.getElementById("custHomePhone").value,
+			        "custBusPhone": document.getElementById("custBusPhone").value,
+			        "custEmail": document.getElementById("custEmail").value,
+			        "custCountry": document.getElementById("custCountry").value,
+			        "custPassword": document.getElementById("custPassword").value,
+			        "custUsername": document.getElementById("custUsername").value,
+			        "agentId": document.getElementById("custAgentId").value
+			 })
+		
+
+        
 	   // contentType: "application/json; charset=utf-8",
 	   
 		});

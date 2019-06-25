@@ -74,7 +74,7 @@ Date: 19/06/2019
         			<h3 class="profile-bookings" style="text-align: center; font-size: 35px; padding-top: 30px;">Your Bookings</h3>
         			<hr>
         			<!-- id="booked" -->
-        			<div>
+        			<div v-if='bookings.length != 0'>
         				 <table class="table table-borderless table-hover">
 							  <thead>
 							    <tr>
@@ -87,6 +87,7 @@ Date: 19/06/2019
 							    </tr>
 							  </thead>
 							  <tbody>
+							  							  	
 								  <tr v-for="booking in bookings">
 								     <td scope="row">{{booking.bookingNo}}</td>
 								     <td>{{booking.bookingDate}}</td>
@@ -108,6 +109,9 @@ Date: 19/06/2019
 								  </tr>
 							  </tbody>
 						 </table>		
+        			</div>
+        			<div v-else>
+        				<h5 class="h5-responsive" style="margin-left: 50px;">You have no bookings</h5>
         			</div>
         		</div>
         	</div>        	
@@ -154,7 +158,8 @@ Date: 19/06/2019
 						                <td><strong>Base Cost</strong></td>:<td> $ {{bookingDet.basePrice}}</td>
 						            </tr>
 						            <tr>
-						                <td><strong>Total Cost</strong></td>:<td></td>
+									<td><strong>Total Cost</strong></td>:<td>$ {{ getTotal(2, bookingDet.basePrice) }}</td>
+						                <!-- <td v-if='totalPrice = booking.travelerCount, bookingDet.basePrice'>{{total}}</td> -->
 						            </tr>
 							     </tbody>
 	  						</table>	  						
@@ -164,8 +169,7 @@ Date: 19/06/2019
   					</div>
 			      </div>
 			      <div class="modal-footer">
-					<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button> -->
+
 			      </div>
 			    </div>
 			  </div>
@@ -188,7 +192,7 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-						  <form action="" method="post" class="mb60" style="min-height:500px;">							
+						  <form action="postcustomer" method="post" class="mb60" style="min-height:500px;">							
 					       
 			     				          	
 					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>
@@ -308,13 +312,17 @@ let book = new Vue({
 		bookingDetails: null,
 		totalCost: null,
 		tripType: '',
-		packageName: ''
+		packageName: '',
+		
+		traveler: null,
 	},
+
 	mounted() {
 		this.getBookings();
 	},
 	
 	methods: {
+		
 		getBookings(){
 					
 			axios({
@@ -340,6 +348,9 @@ let book = new Vue({
 					console.log(error);
 				});
 			},
+		getTotal(trav, price){
+				return trav * price;
+			}
 	},
 	
 	computed: {
@@ -387,10 +398,22 @@ let book = new Vue({
 				}
 			},
 		},
-				
-		getTotalPrice(){
+
+		/* totalPrice: {
 			
-		}
+			// Getter
+			get: function(){
+				this.total;				
+			},
+			
+			// Setter
+			set: function(travler, price){
+				this.traveler = traveler;
+				this.price = price;
+				
+				this.total = this.traveler * this.price;
+			}
+		}, */
 	}
 })
 
@@ -427,7 +450,7 @@ function postCustomerJS()
 			 })
 			 
 	   // contentType: "application/json; charset=utf-8",
-	   
+	   		
 		});
 	}
 </script>

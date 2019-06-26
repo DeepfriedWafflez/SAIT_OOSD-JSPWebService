@@ -194,7 +194,7 @@ Date: 19/06/2019
 			          	<div class="row">
 						  <form action="postcustomer" method="post" class="mb60" style="min-height:500px;">							
 					       
-						     				          	
+			     				          	
 					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>
 					      <div class="mb-3">
 			                <div class="form-group">
@@ -214,7 +214,7 @@ Date: 19/06/2019
 			                <div class="form-group">
 			                	<div class="form-row">
 				                	<div class="col-md-6">
-					                    <label for="fname" class="sr-only">Firts Name</label>
+					                    <label for="fname" class="sr-only">First Name</label>
 					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" value="<%= customerSess.getCustFirstName() %>">
 				               		</div>
 				               		<div class="col-md-6"> 
@@ -226,8 +226,11 @@ Date: 19/06/2019
 			              </div>
 			              <div class="mb-3">
 			                <div class="form-group">
-			                    <label for="fname" class="sr-only">Address</label>			                    
-			                    <textarea cols="30" rows="10" class="form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"><%= customerSess.getCustAddress() %></textarea>
+			                    <label for="fname" class="sr-only">Address</label>	
+			                    		                    
+<%-- 			                    <textarea cols="30" rows="10" class="form-control"  name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"></textarea>
+ --%>			                	
+ 									<input type="text"  cols="30" rows="10" class = "form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>">
 			                </div>
 			              </div>
 			              <div class="mb-3">
@@ -263,11 +266,11 @@ Date: 19/06/2019
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Country</label>
-					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="Country" value="<%= customerSess.getCustCountry() %>">
+					                    <input type="text" class="form-control" id="custCountry" name="firstname" placeholder="Country" value="<%= customerSess.getCustCountry() %>">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Postal Code</label>
-					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Postal Code" value="<%= customerSess.getCustPostal() %>">
+					                    <input type="text" class="form-control" id="custPostal" name="lastname" placeholder="Postal Code" value="<%= customerSess.getCustPostal() %>">
 				                	</div>
 			                	</div>
 			                </div>
@@ -276,14 +279,15 @@ Date: 19/06/2019
 							
 						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
 							       										
-						</form>
-						</div>
-					</div>
+					
 
-			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary btn-small" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-outline-primary btn-small" onclick="postCustomerJS()">Save changes</button>
+			        <button type="button" class="btn btn-outline-primary btn-small" data-dismiss="modal" onclick="postCustomerJS()">Save changes</button>
+			      </div>
+			      	</form>
+			      		</div>
+					</div>
 			      </div>
 			    </div>
 			  </div>
@@ -428,7 +432,7 @@ function postCustomerJS()
 			url:Url,
 			dataType: "json",
 			method:"POST",
-			 data:JSON.stringify({
+			data:JSON.stringify({
 			        "customerId": document.getElementById("customerId").value,
 			        "custFirstName": document.getElementById("custFirstName").value,
 			        "custLastName": document.getElementById("custLastName").value,

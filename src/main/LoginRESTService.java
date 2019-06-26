@@ -25,6 +25,12 @@ import helpers.ValidateCust;
 
 
 
+/**
+Author: Ibraheem Kolawole
+Purpose: Login REST API....
+Date: 22/06/2019
+**/
+
 
 @Path("/loginAPI")
 public class LoginRESTService {
@@ -45,30 +51,27 @@ public class LoginRESTService {
 		
 		String msg = "";
 		
+			
 		
 		if (ValidateCust.isValidString(Username) &&
 				ValidateCust.isValidString(Password) && 
 				ValidateCust.enterValidCredentials(Username, Password)) 
 		{
-			String usrToken = JWTCust.tokenCreate(Username);
+//			String usrToken = JWTCust.tokenCreate(Username);
 			
-			Boolean authCust = JWTCust.tokenRead(usrToken);
+//			Boolean authCust = JWTCust.tokenRead(usrToken);
 			
-			if(authCust != false) {
-				
-				Customer cust = AuthenticateCust.authenticate(Username, Password);
-				
-				String customerJson = gson.toJson(cust);				
-				
-				//	msg = "Authentication succeeded";
-				
+//			if(authCust != false) {				
+						
+			Customer cust = AuthenticateCust.authenticate(Username, Password);
+			
+			if(cust != null) {
+				String customerJson = gson.toJson(cust);
 				msg = customerJson;
-				
 			} else {
-				
 				msg = "Authentication failed";
-				
 			}
+				
 		}
 		else {
 						

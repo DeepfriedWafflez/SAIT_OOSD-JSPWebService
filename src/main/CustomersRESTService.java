@@ -84,9 +84,10 @@ public class CustomersRESTService {
 		em.getTransaction().begin();
 		em.persist(customer);
 		em.getTransaction().commit();
-		
-		
+				
 		return "Customer INSERT completed";
 	}
 	
 }
+
+

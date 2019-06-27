@@ -131,7 +131,7 @@ Date: 19/06/2019
 			      <div class="table-responsive-md">
 			      	<div v-if="bookingDetails != null">
 			      		<div v-for="bookingDet in bookingDetails">
-						     <table class="table table-separated">						     
+						     <table class="table table-separated">
 							     <tbody>
 							     	<tr>
 						               <td><strong>Itinerary No</strong></td>:<td>{{ bookingDet.itineraryNo }}</td>
@@ -197,19 +197,19 @@ Date: 19/06/2019
 					       
 			     				          	
 			     		  <%-- value="<%= customerSess.getCustomerId() %>" --%>
-					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" v-model="updateInfo.customerId"></small>
+					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" v-model="customer.customerId"></small>
 					      <div class="mb-3">
 			                <div class="form-group">
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Username</label>
 					                    <%-- value="<%= customerSess.getCustUsername() %>" --%>
-					                    <input type="text" class="form-control" id="custUsername" name="username" placeholder="Username" v-model="updateInfo.custUsername">
+					                    <input type="text" class="form-control" id="custUsername" name="username" placeholder="Username" v-model="customer.custUsername">
 			                		</div>
 			                		<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Email</label>
 					                    <%-- value="<%= customerSess.getCustEmail() %>" --%>
-					                    <input type="text" class="form-control" id="custEmail" name="email" placeholder="Email" v-model="updateInfo.custEmail">
+					                    <input type="text" class="form-control" id="custEmail" name="email" placeholder="Email" v-model="customer.custEmail">
 			                		</div>
 			                	</div>
 			                </div>
@@ -220,12 +220,12 @@ Date: 19/06/2019
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">First Name</label>
 					                    <%-- value="<%= customerSess.getCustFirstName() %>"  --%>
-					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" v-model="updateInfo.custFirstName">
+					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" v-model="customer.custFirstName">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Last Name</label>
 					                    <%-- value="<%= customerSess.getCustLastName() %>" --%>
-					                    <input type="text" class="form-control" id="custLastName" name="lastname" placeholder="Last Name" v-model="updateInfo.custLastName">
+					                    <input type="text" class="form-control" id="custLastName" name="lastname" placeholder="Last Name" v-model="customer.custLastName">
 				                	</div>
 			                	</div>
 			                </div>
@@ -235,7 +235,7 @@ Date: 19/06/2019
 			                    <label for="fname" class="sr-only">Address</label>	
 			                    		                    
 								<%-- value="<%= customerSess.getCustAddress() %>" --%>		                    		                    
- 			                    <textarea cols="30" rows="10" class="form-control"  name="address" placeholder="Enter your address" v-model="updateInfo.custAddress"></textarea>
+ 			                    <textarea cols="30" rows="10" class="form-control"  name="address" placeholder="Enter your address" v-model="customer.custAddress"></textarea>
 			                	
  								<%-- <input type="text"  cols="30" rows="10" class = "form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"> --%>
 			                </div>
@@ -246,12 +246,12 @@ Date: 19/06/2019
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Home Phone</label>
 					                    <%-- value="<%= customerSess.getCustHomePhone() %>" --%>
-					                    <input type="text" class="form-control" id="custHomePhone" name="homephone" placeholder="Home Phone" v-model="updateInfo.custHomePhone">
+					                    <input type="text" class="form-control" id="custHomePhone" name="homephone" placeholder="Home Phone" v-model="customer.custHomePhone">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Postal Code</label>
 					                    <%-- value="<%= customerSess.getCustBusPhone() %>" --%>
-					                    <input type="text" class="form-control" id="custBusPhone" name="businessphone" placeholder="Business Phone" v-model="updateInfo.custBusPhone">
+					                    <input type="text" class="form-control" id="custBusPhone" name="businessphone" placeholder="Business Phone" v-model="customer.custBusPhone">
 				                	</div>
 			                	</div>
 			                </div>
@@ -262,12 +262,12 @@ Date: 19/06/2019
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">City</label>
 					                    <%-- value="<%= customerSess.getCustCity() %>" --%>
-					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="City" v-model="updateInfo.custCity">
+					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="City" v-model="customer.custCity">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Province</label>
 					                    <%-- value="<%= customerSess.getCustProv() %>" --%>
-					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Province" v-model="updateInfo.custProv">
+					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Province" v-model="customer.custProv">
 				                	</div>
 			                	</div>
 			                </div>
@@ -278,20 +278,20 @@ Date: 19/06/2019
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Country</label>
 					                    <%-- value="<%= customerSess.getCustCountry() %>" --%>
-					                    <input type="text" class="form-control" id="custCountry" name="firstname" placeholder="Country" v-model="updateInfo.custCountry">
+					                    <input type="text" class="form-control" id="custCountry" name="firstname" placeholder="Country" v-model="customer.custCountry">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Postal Code</label>
 					                    <%-- value="<%= customerSess.getCustPostal() %>" --%>
-					                    <input type="text" class="form-control" id="custPostal" name="lastname" placeholder="Postal Code" v-model="updateInfo.custPostal">
+					                    <input type="text" class="form-control" id="custPostal" name="lastname" placeholder="Postal Code" v-model="customer.custPostal">
 				                	</div>
 			                	</div>
 			                </div>
 			              </div>			              				              			        
 			              <%-- value="<%= customerSess.getAgentId() %>" --%>      
-						  <small><input type="text" style="display:none;" class="mb-3" id="custAgentId" v-model="updateInfo.agentId"></small>
+						  <small><input type="text" style="display:none;" class="mb-3" id="custAgentId" v-model="customer.agentId"></small>
 						  <%-- value="<%= customerSess.getCustPassword() %>" --%>
-						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword" v-model="updateInfo.custPassword"></small>
+						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword" v-model="customer.custPassword"></small>
 
 
 					      <div class="modal-footer">
@@ -330,28 +330,11 @@ let book = new Vue({
 		
 		customer: {},
 		
-		updateInfo: {
-			customerId: ${custProf.getCustomerId()},
-			agentId: ${custProf.getAgentId()},
-			custAddress: "${custProf.getCustAddress()}", 
-			custBusPhone: ${custProf.getCustBusPhone()},
-			custCity: "${custProf.getCustCity()}",
-			custCountry: "${custProf.getCustCountry()}",
-			custEmail: "${custProf.getCustEmail()}",
-			custFirstName: "${custProf.getCustFirstName()}",
-			custHomePhone: ${custProf.getCustBusPhone()},
-			custLastName: "${custProf.getCustLastName()}",
-			custPassword: "${custProf.getCustPassword()}",
-			custPostal: "${custProf.getCustPostal()}",
-			custProv: "${custProf.getCustProv()}",
-			custUsername: "${custProf.getCustUsername()}"
-		},
-		
  		showMod: false,
 		
 		traveler: null,
 	},
-
+	
 	mounted() {
 		this.getBookings();
 		this.getCustomer();
@@ -407,20 +390,20 @@ let book = new Vue({
 					method: "PUT",
 					url: "http://localhost:8080/Team3-JSPWebService/rest/customers/putcustomer",
 					data: {
- 						customerId: this.updateInfo.customerId,
-						agentId: this.updateInfo.agentId,
-						custAddress: this.updateInfo.custAddress,
-						custBusPhone: this.updateInfo.custBusPhone,
-						custCity: this.updateInfo.custCity,
-						custCountry: this.updateInfo.custCountry,
-						custEmail: this.updateInfo.custEmail,
-						custFirstName: this.updateInfo.custFirstName,
-						custHomePhone: this.updateInfo.custHomePhone,
-						custLastName: this.updateInfo.custLastName,
-						custPassword: this.updateInfo.custPassword,
-						custPostal: this.updateInfo.custPostal,
-						custProv: this.updateInfo.custProv,
-						custUsername: this.updateInfo.custUsername
+ 						customerId: this.customer.customerId,
+						agentId: this.customer.agentId,
+						custAddress: this.customer.custAddress,
+						custBusPhone: this.customer.custBusPhone,
+						custCity: this.customer.custCity,
+						custCountry: this.customer.custCountry,
+						custEmail: this.customer.custEmail,
+						custFirstName: this.customer.custFirstName,
+						custHomePhone: this.customer.custHomePhone,
+						custLastName: this.customer.custLastName,
+						custPassword: this.customer.custPassword,
+						custPostal: this.customer.custPostal,
+						custProv: this.customer.custProv,
+						custUsername: this.customer.custUsername
 					},
 					
 				}).then(response => {

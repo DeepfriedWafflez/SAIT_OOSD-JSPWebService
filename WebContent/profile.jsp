@@ -53,16 +53,16 @@ Date: 19/06/2019
               		<div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate" style="border-radius:10px;">
                   		<img src="images/profile_img.jpg" alt="profile image" class="img-fluid" style="border-radius:10px;">
                   		<div class="media-body">
-	                  		<h5 class="mb-3">Username: <small><%= customerSess.getCustUsername() %></small> </h5>
-                    		<h5 class="mb-3">Name: <small><%= customerSess.getCustFirstName() + " " + customerSess.getCustLastName() %></small> </h5>
-                    		<h5 class="mb-3">Email: <small><%= customerSess.getCustEmail() %></small> </h5>
-                    		<h5 class="mb-3">Address: <br><small><%= customerSess.getCustAddress() %></small> </h5>
-                    		<h5 class="mb-3">Phone (Business): <small><%= customerSess.getCustBusPhone() %></small> </h5>
-                    		<h5 class="mb-3">Phone (Home): <small><%= customerSess.getCustHomePhone() %></small> </h5>
+	                  		<h5 class="mb-3">Username: <small>{{ customer.custUsername }}</small> </h5>
+                    		<h5 class="mb-3">Name: <small>{{ fullName }}</small> </h5>
+                    		<h5 class="mb-3">Email: <small>{{ customer.custEmail }}</small> </h5>
+                    		<h5 class="mb-3">Address: <br><small>{{ customer.custAddress }}</small> </h5>
+                    		<h5 class="mb-3">Phone (Business): <small>{{ customer.custBusPhone }}</small> </h5>
+                    		<h5 class="mb-3">Phone (Home): <small>{{ customer.custHomePhone }}</small> </h5>
 	                  		<!-- <button class="btn btn-outline-warning btn-small btn-block">Settings</button> -->
 	                  		
 	                  		<!-- Button trigger modal -->
-							<button type="button" class="btn btn-outline-warning btn-small btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+							<button type="button" class="btn btn-outline-warning btn-small btn-block" data-toggle="modal" data-target="#exampleModalCenter" @click="showModal">
 							  Settings
 							</button>
                   		</div>
@@ -179,7 +179,7 @@ Date: 19/06/2019
 			<!-- Modal Booking Details END!!!! -->
 					
 			<!-- Modal -->
-			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal fade modal-cust" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -192,20 +192,24 @@ Date: 19/06/2019
 			        
 					<div class="col-md-12 probootstrap-animate probootstrap-form-box probootstrap-form">
 			          	<div class="row">
-						  <form action="postcustomer" method="post" class="mb60" style="min-height:500px;">							
+			          	  <!-- action="postcustomer" method="post" -->
+						  <form @submit.prevent="updateCustomer" class="mb60" style="min-height:500px;">							
 					       
 			     				          	
-					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" value="<%= customerSess.getCustomerId() %>"></small>
+			     		  <%-- value="<%= customerSess.getCustomerId() %>" --%>
+					      <small><input type="text" style="display:none;" class="mb-3" id="customerId" v-model="updateInfo.customerId"></small>
 					      <div class="mb-3">
 			                <div class="form-group">
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Username</label>
-					                    <input type="text" class="form-control" id="custUsername" name="username" placeholder="Username" value="<%= customerSess.getCustUsername() %>">
+					                    <%-- value="<%= customerSess.getCustUsername() %>" --%>
+					                    <input type="text" class="form-control" id="custUsername" name="username" placeholder="Username" v-model="updateInfo.custUsername">
 			                		</div>
 			                		<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Email</label>
-					                    <input type="text" class="form-control" id="custEmail" name="email" placeholder="Email" value="<%= customerSess.getCustEmail() %>">
+					                    <%-- value="<%= customerSess.getCustEmail() %>" --%>
+					                    <input type="text" class="form-control" id="custEmail" name="email" placeholder="Email" v-model="updateInfo.custEmail">
 			                		</div>
 			                	</div>
 			                </div>
@@ -215,11 +219,13 @@ Date: 19/06/2019
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">First Name</label>
-					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" value="<%= customerSess.getCustFirstName() %>">
+					                    <%-- value="<%= customerSess.getCustFirstName() %>"  --%>
+					                    <input type="text" class="form-control" id="custFirstName" name="firstname" placeholder="First Name" v-model="updateInfo.custFirstName">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Last Name</label>
-					                    <input type="text" class="form-control" id="custLastName" name="lastname" placeholder="Last Name" value="<%= customerSess.getCustLastName() %>">
+					                    <%-- value="<%= customerSess.getCustLastName() %>" --%>
+					                    <input type="text" class="form-control" id="custLastName" name="lastname" placeholder="Last Name" v-model="updateInfo.custLastName">
 				                	</div>
 			                	</div>
 			                </div>
@@ -228,9 +234,10 @@ Date: 19/06/2019
 			                <div class="form-group">
 			                    <label for="fname" class="sr-only">Address</label>	
 			                    		                    
-<%-- 			                    <textarea cols="30" rows="10" class="form-control"  name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"></textarea>
- --%>			                	
- 									<input type="text"  cols="30" rows="10" class = "form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>">
+								<%-- value="<%= customerSess.getCustAddress() %>" --%>		                    		                    
+ 			                    <textarea cols="30" rows="10" class="form-control"  name="address" placeholder="Enter your address" v-model="updateInfo.custAddress"></textarea>
+			                	
+ 								<%-- <input type="text"  cols="30" rows="10" class = "form-control" id="custAddress" name="address" placeholder="Enter your address" value="<%= customerSess.getCustAddress() %>"> --%>
 			                </div>
 			              </div>
 			              <div class="mb-3">
@@ -238,11 +245,13 @@ Date: 19/06/2019
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Home Phone</label>
-					                    <input type="text" class="form-control" id="custHomePhone" name="homephone" placeholder="Home Phone" value="<%= customerSess.getCustHomePhone() %>">
+					                    <%-- value="<%= customerSess.getCustHomePhone() %>" --%>
+					                    <input type="text" class="form-control" id="custHomePhone" name="homephone" placeholder="Home Phone" v-model="updateInfo.custHomePhone">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Postal Code</label>
-					                    <input type="text" class="form-control" id="custBusPhone" name="businessphone" placeholder="Business Phone" value="<%= customerSess.getCustBusPhone() %>">
+					                    <%-- value="<%= customerSess.getCustBusPhone() %>" --%>
+					                    <input type="text" class="form-control" id="custBusPhone" name="businessphone" placeholder="Business Phone" v-model="updateInfo.custBusPhone">
 				                	</div>
 			                	</div>
 			                </div>
@@ -252,11 +261,13 @@ Date: 19/06/2019
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">City</label>
-					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="City" value="<%= customerSess.getCustCity() %>">
+					                    <%-- value="<%= customerSess.getCustCity() %>" --%>
+					                    <input type="text" class="form-control" id="custCity" name="firstname" placeholder="City" v-model="updateInfo.custCity">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Province</label>
-					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Province" value="<%= customerSess.getCustProv() %>">
+					                    <%-- value="<%= customerSess.getCustProv() %>" --%>
+					                    <input type="text" class="form-control" id="custProv" name="lastname" placeholder="Province" v-model="updateInfo.custProv">
 				                	</div>
 			                	</div>
 			                </div>
@@ -266,25 +277,28 @@ Date: 19/06/2019
 			                	<div class="form-row">
 				                	<div class="col-md-6">
 					                    <label for="fname" class="sr-only">Country</label>
-					                    <input type="text" class="form-control" id="custCountry" name="firstname" placeholder="Country" value="<%= customerSess.getCustCountry() %>">
+					                    <%-- value="<%= customerSess.getCustCountry() %>" --%>
+					                    <input type="text" class="form-control" id="custCountry" name="firstname" placeholder="Country" v-model="updateInfo.custCountry">
 				               		</div>
 				               		<div class="col-md-6"> 
 					                    <label for="fname" class="sr-only">Postal Code</label>
-					                    <input type="text" class="form-control" id="custPostal" name="lastname" placeholder="Postal Code" value="<%= customerSess.getCustPostal() %>">
+					                    <%-- value="<%= customerSess.getCustPostal() %>" --%>
+					                    <input type="text" class="form-control" id="custPostal" name="lastname" placeholder="Postal Code" v-model="updateInfo.custPostal">
 				                	</div>
 			                	</div>
 			                </div>
-			              </div>			              				              			              
-						  <small><input type="text" style="display:none;" class="mb-3" id="custAgentId"value="<%= customerSess.getAgentId() %>"></small>
-							
-						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword"value="<%= customerSess.getCustPassword() %>"></small>
-							       										
-					
+			              </div>			              				              			        
+			              <%-- value="<%= customerSess.getAgentId() %>" --%>      
+						  <small><input type="text" style="display:none;" class="mb-3" id="custAgentId" v-model="updateInfo.agentId"></small>
+						  <%-- value="<%= customerSess.getCustPassword() %>" --%>
+						  <small><input type="text" style="display:none;" class="mb-3" id="custPassword" v-model="updateInfo.custPassword"></small>
 
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-outline-secondary btn-small" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-outline-primary btn-small" data-dismiss="modal" onclick="postCustomerJS()">Save changes</button>
-			      </div>
+
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-outline-secondary btn-small" data-dismiss="modal">Close</button>
+					        <button type="submit" class="btn btn-outline-primary btn-small" @click="showModal">Save changes</button>
+							
+					      </div>
 			      	</form>
 			      		</div>
 					</div>
@@ -314,11 +328,33 @@ let book = new Vue({
 		tripType: '',
 		packageName: '',
 		
+		customer: {},
+		
+		updateInfo: {
+			customerId: ${custProf.getCustomerId()},
+			agentId: ${custProf.getAgentId()},
+			custAddress: "${custProf.getCustAddress()}", 
+			custBusPhone: ${custProf.getCustBusPhone()},
+			custCity: "${custProf.getCustCity()}",
+			custCountry: "${custProf.getCustCountry()}",
+			custEmail: "${custProf.getCustEmail()}",
+			custFirstName: "${custProf.getCustFirstName()}",
+			custHomePhone: ${custProf.getCustBusPhone()},
+			custLastName: "${custProf.getCustLastName()}",
+			custPassword: "${custProf.getCustPassword()}",
+			custPostal: "${custProf.getCustPostal()}",
+			custProv: "${custProf.getCustProv()}",
+			custUsername: "${custProf.getCustUsername()}"
+		},
+		
+ 		showMod: false,
+		
 		traveler: null,
 	},
 
 	mounted() {
 		this.getBookings();
+		this.getCustomer();
 	},
 	
 	methods: {
@@ -348,9 +384,72 @@ let book = new Vue({
 					console.log(error);
 				});
 			},
+			
 		getTotal(trav, price){
 				return trav * price;
-			}
+			},
+			
+		getCustomer(){
+				axios({
+					method: "GET",
+					url: "http://localhost:8080/Team3-JSPWebService/rest/customers/getcustomer/" + ${custProf.getCustomerId()}})
+					.then(response => {
+						console.log(response.data);
+						this.customer = response.data;
+					})
+					.catch(error => {
+						console.log(error)
+					})
+			},
+			
+		updateCustomer(){
+				axios({
+					method: "PUT",
+					url: "http://localhost:8080/Team3-JSPWebService/rest/customers/putcustomer",
+					data: {
+ 						customerId: this.updateInfo.customerId,
+						agentId: this.updateInfo.agentId,
+						custAddress: this.updateInfo.custAddress,
+						custBusPhone: this.updateInfo.custBusPhone,
+						custCity: this.updateInfo.custCity,
+						custCountry: this.updateInfo.custCountry,
+						custEmail: this.updateInfo.custEmail,
+						custFirstName: this.updateInfo.custFirstName,
+						custHomePhone: this.updateInfo.custHomePhone,
+						custLastName: this.updateInfo.custLastName,
+						custPassword: this.updateInfo.custPassword,
+						custPostal: this.updateInfo.custPostal,
+						custProv: this.updateInfo.custProv,
+						custUsername: this.updateInfo.custUsername
+					},
+					
+				}).then(response => {
+					console.log(response.data);
+					
+					console.log("In update customer");
+					
+					this.getCustomer();
+					
+					
+				})
+			},
+			
+		showModal(){
+	            if(this.showMod==false){
+	
+	                this.showMod = true;
+	
+	                $(".modal-cust").modal("show");
+	
+	            } else {
+	
+	                this.showMod = false;
+	
+	                $(".modal-cust").modal("hide");
+	
+	            } 
+				
+		},
 	},
 	
 	computed: {
@@ -398,6 +497,12 @@ let book = new Vue({
 				}
 			},
 		},
+		
+		fullName() {
+			
+			return this.customer.custFirstName + " " + this.customer.custLastName;
+			
+		}
 
 		/* totalPrice: {
 			
@@ -452,7 +557,8 @@ function postCustomerJS()
 	   // contentType: "application/json; charset=utf-8",
 	   		
 		});
-	}
+		location.reload();
+	};
 </script>
 
 </body>

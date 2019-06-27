@@ -43,7 +43,7 @@ public class CustomersRESTService {
 		return jsonString;
 	}
 	
-	//POST 
+
 	@POST
     @Path("/postcustomer")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -60,7 +60,7 @@ public class CustomersRESTService {
                 Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
 
         em.getTransaction().begin();
-        em.merge(customer);
+        em.persist(customer);
         em.getTransaction().commit();
         return "Customer update completed";
     }
@@ -71,10 +71,10 @@ public class CustomersRESTService {
 	@PUT
 	@Path("/putcustomer")
 	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces({MediaType.APPLICATION_JSON})
 	public String putCustomer(String jsonString)
 	{
-//		http://localhost:8080/Team3-JSPWebService/rest/customers/putcustomer
+		//	http://localhost:8080/Team3-JSPWebService/rest/customers/putcustomer
 		
 		Gson gson = new Gson();
 		Type type = new TypeToken<Customer>() {}.getType();
@@ -82,12 +82,11 @@ public class CustomersRESTService {
 		EntityManager em = Persistence.createEntityManagerFactory("Team3-JSPWebService").createEntityManager();
 		
 		em.getTransaction().begin();
-		em.persist(customer);
+		em.merge(customer);
 		em.getTransaction().commit();
 				
-		return "Customer INSERT completed";
+		return "Account update successful";
 	}
 	
 }
-
 

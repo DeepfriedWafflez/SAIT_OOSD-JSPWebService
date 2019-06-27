@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="javax.servlet.http.HttpSession, entity.Customer"%>
+    pageEncoding="UTF-8" import="javax.servlet.http.HttpSession, entity.Customer" %>
 
 <%
 	
@@ -49,14 +49,16 @@ Date: 19/06/2019
 				Customer customerSess = (Customer) session.getAttribute("customer");	
 		%>
         	<div class="col-md-4">
+        	        	
             	<div class="probootstrap-animate">
               		<div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate" style="border-radius:10px;">
                   		<img src="images/profile_img.jpg" alt="profile image" class="img-fluid" style="border-radius:10px;">
-                  		<div class="media-body">
+                  		                  		
+                  		<div class="media-body"> 
 	                  		<h5 class="mb-3">Username: <small>{{ customer.custUsername }}</small> </h5>
                     		<h5 class="mb-3">Name: <small>{{ fullName }}</small> </h5>
                     		<h5 class="mb-3">Email: <small>{{ customer.custEmail }}</small> </h5>
-                    		<h5 class="mb-3">Address: <br><small>{{ customer.custAddress }}</small> </h5>
+                    		<h5 class="mb-3">Address: <br><small>{{ fullAddress }}</small> </h5>
                     		<h5 class="mb-3">Phone (Business): <small>{{ customer.custBusPhone }}</small> </h5>
                     		<h5 class="mb-3">Phone (Home): <small>{{ customer.custHomePhone }}</small> </h5>
 	                  		<!-- <button class="btn btn-outline-warning btn-small btn-block">Settings</button> -->
@@ -70,6 +72,14 @@ Date: 19/06/2019
               	</div>
         	</div>
         	<div class="col-md-8">
+        		 <span v-if="updateMsg">
+				    <div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Account updated successfully</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</span>
         		<div class="probootstrap-animate" style="background:white; min-height: 600px; border-radius:10px;">
         			<h3 class="profile-bookings" style="text-align: center; font-size: 35px; padding-top: 30px;">Your Bookings</h3>
         			<hr>
@@ -333,6 +343,8 @@ let book = new Vue({
  		showMod: false,
 		
 		traveler: null,
+		
+		updateMessage: ""
 	},
 	
 	mounted() {
@@ -409,7 +421,7 @@ let book = new Vue({
 				}).then(response => {
 					console.log(response.data);
 					
-					console.log("In update customer");
+					this.updateMessage = response.data;
 					
 					this.getCustomer();
 					
@@ -485,7 +497,21 @@ let book = new Vue({
 			
 			return this.customer.custFirstName + " " + this.customer.custLastName;
 			
+		},
+		fullAddress() {
+			return this.customer.custAddress + ", " + this.customer.custCity + 
+			", \n" + this.customer.custPostal + " " + this.customer.custProv + ", " + this.customer.custCountry;
 		}
+		,
+		
+        updateMsg(){
+            if(this.updateMessage != ''){
+                setTimeout(() => this.updateMessage="", 5000);
+                return true;
+            } else {
+                return false;
+            }
+        },
 
 		/* totalPrice: {
 			

@@ -329,6 +329,12 @@ Date: 19/06/2019
 
 <script>
 
+
+/* 
+* Author: Ibraheem Kolawole
+* Purpose: Vue js ajax communication with REST API/Service
+* Date: 25/06/2019
+*/
 let book = new Vue({
 	el: "#booked",
 	data: {

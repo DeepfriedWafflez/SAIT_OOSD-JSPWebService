@@ -12,6 +12,8 @@ import entity.Customer;
 
 /**
 Author: Ibraheem Kolawole
+Contributing authors: Linda Wallace and Guido - Setting Modal
+
 Purpose: Customer profile jsp
 Date: 22/06/2019
 **/

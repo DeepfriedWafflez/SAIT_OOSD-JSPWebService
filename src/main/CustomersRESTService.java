@@ -19,6 +19,7 @@ import com.google.gson.reflect.TypeToken;
 
 import entity.Customer;
 
+// authors: Linda Wallace & Guido 
 
 @Path("/customers")
 public class CustomersRESTService {
